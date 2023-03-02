@@ -9,6 +9,14 @@ INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('22233344455', 'Maria 
 INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('33344455566', 'Pedro Rocha', 42, '03047000', 'pedro.rocha@yahoo.com');
 INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('44455566677', 'Ana Santos', 28, '04524010', 'ana.santos@gmail.com');
 INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('55566677788', 'Fernando Oliveira', 30, '01311915', 'fernando.oliveira@gmail.com');
+INSERT INTO Pessoa VALUES ('15234786985', 'Lucas Silveira', 22, '01088800', 'lucas.silveira@gmail.com');
+INSERT INTO Pessoa VALUES ('15234852345', 'Lucas Batista', 18, '01885690', 'lucas.batista@gmail.com');
+INSERT INTO Pessoa VALUES ('85652186985', 'Bruno Costa', 23, '01056800', 'bruno.costa@gmail.com');
+INSERT INTO Pessoa VALUES ('18532486985', 'Brenno Augusto', 43, '85788800', 'brenno.augusto@gmail.com');
+INSERT INTO Pessoa VALUES ('12324786985', 'Maria Silva', 22, '05538800', 'maria.silva@gmail.com');
+INSERT INTO Pessoa VALUES ('86524786985', 'Maria Ferreira', 24, '88988800', 'maria.ferreira@gmail.com');
+INSERT INTO Pessoa VALUES ('23144786985', 'Eduarda Gomes', 25, '02488800', 'eduarda.gomes@gmail.com');
+
 
 INSERT INTO Telefone_pessoa (cpf_pessoa, numero, ddd) VALUES ('11122233344', '999988877', '11');
 INSERT INTO Telefone_pessoa (cpf_pessoa, numero, ddd) VALUES ('11122233344', '88887777', '11');
