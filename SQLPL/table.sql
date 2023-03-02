@@ -40,8 +40,8 @@ CONSTRAINT telefone_pessoa_fkey FOREIGN KEY(cpf_pessoa) REFERENCES Pessoa(cpf)
 CREATE TABLE Fabrica(
 	cnpj VARCHAR2(14) NOT NULL,
 	nome VARCHAR2(30),
-cep VARCHAR2(8),
-email VARCHAR2(20),
+	cep VARCHAR2(8),
+	email VARCHAR2(20),
 CONSTRAINT fabrica_pkey PRIMARY KEY(cnpj),
 CONSTRAINT fabrica_fkey FOREIGN KEY(cep) REFERENCES Endereco(cep)
 );
@@ -53,7 +53,6 @@ CREATE TABLE Telefone_fabrica(
 CONSTRAINT telefone_fabrica_pkey PRIMARY KEY(cnpj_fabrica, numero),
 CONSTRAINT telefone_fabrica_fkey FOREIGN KEY(cnpj_fabrica) REFERENCES Fabrica(cnpj)
 );
-
 
 
 CREATE TABLE Funcionario(
@@ -74,14 +73,11 @@ CONSTRAINT cliente_pkey PRIMARY KEY(id_cliente),
 CONSTRAINT cliente_fkey FOREIGN KEY(cpf_cliente) REFERENCES Pessoa(cpf)
 );
 
-
 CREATE TABLE Modelo_Carro (
 	modelo VARCHAR2(10) NOT NULL,
 	capacidade INTEGER,
-	
 CONSTRAINT modelo_carro_pkey PRIMARY KEY(modelo)
 );
-
 
 CREATE TABLE Carro(
 	chassi VARCHAR2(5) NOT NULL,
@@ -94,34 +90,29 @@ CONSTRAINT carro_fkey1 FOREIGN KEY(cnpj_fabrica) REFERENCES Fabrica(cnpj),
 CONSTRAINT carro_fkey2 FOREIGN KEY(modelo) REFERENCES Modelo_Carro(modelo)
 );
 
-
 CREATE TABLE Desconto(
 	codigo VARCHAR2(20),
 	percentual_desconto INTEGER,
-
 CONSTRAINT desconto_pkey PRIMARY KEY(codigo)	
 );
 
 CREATE TABLE Vender_Promo(
-id_cliente NUMBER,
-matricula_funcionario NUMBER,
-chassis_carro VARCHAR(17),
-data_venda TIMESTAMP,
-valor NUMBER(9,2),
-codigo_desconto VARCHAR2(20),
-
+	id_cliente NUMBER,
+	matricula_funcionario NUMBER,
+	chassis_carro VARCHAR(17),
+	data_venda TIMESTAMP,
+	valor NUMBER(9,2),
+	codigo_desconto VARCHAR2(20),
 CONSTRAINT vender_promo_pk PRIMARY KEY(id_cliente, matricula_funcionario, chassis_carro, data_venda),
-
 CONSTRAINT vender_promo_fk_id_cliente FOREIGN KEY(id_cliente) REFERENCES Cliente(id_cliente),
-
 CONSTRAINT vender_promo_fk_matricula_funcionario FOREIGN KEY(matricula_funcionario) REFERENCES Funcionario(matricula),
-
 CONSTRAINT vender_promo_fk_chassis_carro FOREIGN KEY(chassis_carro) REFERENCES Carro(chassi),
-
 CONSTRAINT vender_promo_fk_codigo_desconto FOREIGN KEY(codigo_desconto) REFERENCES Desconto(codigo)
-
 );
 
 CREATE SEQUENCE id_cliente_seq
-         INCREMENT BY 1 START WITH 1;
+    INCREMENT BY 1 START WITH 1;
+
+CREATE SEQUENCE matricula_funcionario_seq
+	INCREMENT BY 1 START WITH 1;
 
