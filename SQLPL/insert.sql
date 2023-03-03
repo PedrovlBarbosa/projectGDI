@@ -3,6 +3,15 @@ INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05417010', 120, 'Pinhei
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('03047000', 200, 'Belenzinho', 'Rua Siqueira Bueno');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('04524010', 300, 'Itaim Bibi', 'Rua João Cachoeira');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01311915', 400, 'Bela Vista', 'Rua Treze de Maio');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01088800', 400, 'Recife', 'Rua Quinze');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01885690', 400, 'Cabo', 'Rua Dois');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01056800', 400, 'Varzea', 'Rua Tres');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('85788800', 400, 'Olinda', 'Rua Sete');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05538800', 400, 'Prazeres', 'Rua Dez');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('88988800', 400, 'Jaboatao', 'Rua Onze');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('02488800', 400, 'Dois Irmao', 'Rua Doze');
+
+
 
 INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('11122233344', 'João da Silva', 25, '01001000', 'joao.silva@gmail.com');
 INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('22233344455', 'Maria Souza', 35, '05417010', 'maria.souza@hotmail.com');
