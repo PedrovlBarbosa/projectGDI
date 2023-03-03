@@ -41,7 +41,7 @@ CREATE TABLE Fabrica(
 	cnpj VARCHAR2(14) NOT NULL,
 	nome VARCHAR2(30),
 	cep VARCHAR2(8),
-	email VARCHAR2(20),
+	email VARCHAR2(30),
 CONSTRAINT fabrica_pkey PRIMARY KEY(cnpj),
 CONSTRAINT fabrica_fkey FOREIGN KEY(cep) REFERENCES Endereco(cep)
 );
