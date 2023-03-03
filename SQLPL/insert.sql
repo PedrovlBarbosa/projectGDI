@@ -67,17 +67,17 @@ INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '15234852345');
 
 
 -- Inserção dos modelos de carro
-INSERT INTO Modelo_Carro (modelo, capacidade) VALUES ('Uno', 5);
+INSERT INTO Modelo_Carro (modelo, capacidade) VALUES ('Uno', 9);
 INSERT INTO Modelo_Carro (modelo, capacidade) VALUES ('Gol', 5);
 INSERT INTO Modelo_Carro (modelo, capacidade) VALUES ('Palio', 5);
 
 -- Inserção dos carros
 INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00001', '11111111111111', 'Uno', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Azul');
-INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00002', '33333333333333', 'Uno', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Preto');
-INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00003', '22222222222222', 'Gol', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Branco');
-INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00004', '44444444444444', 'Gol', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Vermelho');
-INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00005', '55555555555555', 'Palio', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Prata');
-INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00006', '11111111111111', 'Palio', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Preto');
+INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00002', '33333333333333', 'Uno', TO_DATE('2020-05-01', 'YYYY-MM-DD'), 'Preto');
+INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00003', '22222222222222', 'Gol', TO_DATE('2022-11-21', 'YYYY-MM-DD'), 'Branco');
+INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00004', '44444444444444', 'Gol', TO_DATE('2015-01-01', 'YYYY-MM-DD'), 'Vermelho');
+INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00005', '55555555555555', 'Palio', TO_DATE('2009-01-01', 'YYYY-MM-DD'), 'Prata');
+INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00006', '11111111111111', 'Palio', TO_DATE('2012-02-10', 'YYYY-MM-DD'), 'Preto');
 
 
 -- Inserção dos descontos
@@ -86,3 +86,10 @@ INSERT INTO Desconto VALUES ('DESC20', 20);
 INSERT INTO Desconto VALUES ('DESC30', 30);
 INSERT INTO Desconto VALUES ('DESC40', 40);
 INSERT INTO Desconto VALUES ('DESC50', 50);
+
+INSERT INTO Vender_Promo VALUES (1, 4432, '00001', TO_TIMESTAMP('2022-12-21 18:30:00','YYYY-MM-DD HH24:MI:SS'), 10000, 'DESC20');
+INSERT INTO Vender_Promo VALUES (3, 2324, '00005', TO_TIMESTAMP('2022-10-20 13:42:00','YYYY-MM-DD HH24:MI:SS'), 5000, NULL);
+INSERT INTO Vender_Promo VALUES (5, 6786, '00002', TO_TIMESTAMP('2022-12-21 19:45:00','YYYY-MM-DD HH24:MI:SS'), 7000, 'DESC10');
+INSERT INTO Vender_Promo VALUES (7, 3434, '00003', TO_TIMESTAMP('2022-09-01 10:37:00','YYYY-MM-DD HH24:MI:SS'), 20000, NULL);
+INSERT INTO Vender_Promo VALUES (2, 3434, '00006', TO_TIMESTAMP('2022-06-15 18:30:00','YYYY-MM-DD HH24:MI:SS'), 6500, 'DESC30');
+INSERT INTO Vender_Promo VALUES (4, 1245, '00004', TO_TIMESTAMP('2022-10-06 09:32:00','YYYY-MM-DD HH24:MI:SS'), 5000, 'DESC40');
