@@ -15,7 +15,7 @@ CREATE TABLE Endereco(
 	cep VARCHAR2(8) NOT NULL,
 	numero INTEGER,
 	bairro VARCHAR2(10),
-	rua VARCHAR2(10),
+	rua VARCHAR2(30),
 CONSTRAINT endereco_pkey PRIMARY KEY(cep)
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE Pessoa(
 	nome VARCHAR2(30),
 	idade INTEGER CHECK(idade > 18),
 	cep VARCHAR2(8),
-	email VARCHAR2(20),
+	email VARCHAR2(40),
 CONSTRAINT pessoa_pkey PRIMARY KEY(cpf),
 CONSTRAINT pessoa_fkey FOREIGN KEY(cep) REFERENCES Endereco(cep)
 );
