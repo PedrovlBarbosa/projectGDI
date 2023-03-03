@@ -22,7 +22,7 @@ CONSTRAINT endereco_pkey PRIMARY KEY(cep)
 CREATE TABLE Pessoa(
 	cpf VARCHAR2(11) NOT NULL,
 	nome VARCHAR2(30),
-	idade INTEGER CHECK(idade > 18),
+	idade INTEGER CHECK(idade >= 18),
 	cep VARCHAR2(8),
 	email VARCHAR2(40),
 CONSTRAINT pessoa_pkey PRIMARY KEY(cpf),
