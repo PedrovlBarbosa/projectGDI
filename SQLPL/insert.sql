@@ -51,6 +51,15 @@ INSERT INTO Telefone_fabrica (cnpj_fabrica, numero, ddd) VALUES ('44444444444444
 INSERT INTO Telefone_fabrica (cnpj_fabrica, numero, ddd) VALUES ('44444444444444', '444444444', '41');
 INSERT INTO Telefone_fabrica (cnpj_fabrica, numero, ddd) VALUES ('55555555555555', '555555555', '81');
 
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '11122233344');
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '22233344455');
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '33344455566');
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '44455566677');
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '55566677788');
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '15234786985');
+INSERT INTO Cliente VALUES (id_cliente_seq.NEXTVAL, '15234852345');
+
+
 -- Inserção dos modelos de carro
 INSERT INTO Modelo_Carro (modelo, capacidade) VALUES ('Uno', 5);
 INSERT INTO Modelo_Carro (modelo, capacidade) VALUES ('Gol', 5);
