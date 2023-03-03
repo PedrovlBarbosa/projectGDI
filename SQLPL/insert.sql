@@ -9,6 +9,7 @@ INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01056800', 77, 'Varzea'
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('85788800', 22, 'Olinda', 'Rua Sete');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05538800', 68, 'Prazeres', 'Rua Dez');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('88988800', 99, 'Jaboatao', 'Rua Onze');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('02488800', 444, 'Bairro X', 'Rua G');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('12345678', 400, 'Dois Irmao', 'Rua Doze');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('23456789', 400, 'Guabiraba', 'Rua Treze');
 INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('34567890', 400, 'Jazira', 'Rua Vinte');
