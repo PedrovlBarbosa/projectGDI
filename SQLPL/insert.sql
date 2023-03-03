@@ -64,3 +64,10 @@ INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00004', '444
 INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00005', '55555555555555', 'Palio', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Prata');
 INSERT INTO Carro (chassi, cnpj_fabrica, modelo, ano, cor) VALUES ('00006', '11111111111111', 'Palio', TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Preto');
 
+
+-- Inserção dos descontos
+INSERT INTO Desconto VALUES ('DESC10', 10);
+INSERT INTO Desconto VALUES ('DESC20', 20);
+INSERT INTO Desconto VALUES ('DESC30', 30);
+INSERT INTO Desconto VALUES ('DESC40', 40);
+INSERT INTO Desconto VALUES ('DESC50', 50);
