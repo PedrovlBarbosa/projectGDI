@@ -1,20 +1,20 @@
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01001000', 100, 'Centro', 'Rua Direita');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05417010', 120, 'Pinheiros', 'Rua dos Pinheiros');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('03047000', 200, 'Belenzinho', 'Rua Siqueira Bueno');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('04524010', 22, 'Itaim Bibi', 'Rua João Cachoeira');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01311915', 39, 'Bela Vista', 'Rua Treze de Maio');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01088800', 16, 'Recife', 'Rua Quinze');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01885690', 15, 'Cabo', 'Rua Dois');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01056800', 77, 'Varzea', 'Rua Tres');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('85788800', 22, 'Olinda', 'Rua Sete');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05538800', 68, 'Prazeres', 'Rua Dez');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('88988800', 99, 'Jaboatao', 'Rua Onze');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('02488800', 444, 'Bairro X', 'Rua G');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('12345678', 400, 'Dois Irmao', 'Rua Doze');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('23456789', 400, 'Guabiraba', 'Rua Treze');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('34567890', 400, 'Jazira', 'Rua Vinte');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('45678901', 400, 'Afiloe', 'Rua Trinta');
-INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('56789012', 400, 'Planua', 'Rua Nove');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01001000', 100, 'Centro', 'Rua Direita', 'casa de esquina');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05417010', 120, 'Pinheiros', 'Rua dos Pinheiros', 'apto 200');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('03047000', 200, 'Belenzinho', 'Rua Siqueira Bueno', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('04524010', 22, 'Itaim Bibi', 'Rua João Cachoeira', 'casa térreo');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01311915', 39, 'Bela Vista', 'Rua Treze de Maio', 'casa verde');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01088800', 16, 'Recife', 'Rua Quinze', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01885690', 15, 'Cabo', 'Rua Dois', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('01056800', 77, 'Varzea', 'Rua Tres', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('85788800', 22, 'Olinda', 'Rua Sete', 'casa de esquina');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('05538800', 68, 'Prazeres', 'Rua Dez', 'proximo a padaria');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('88988800', 99, 'Jaboatao', 'Rua Onze', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('02488800', 444, 'Bairro X', 'Rua G', 'primeira da rua');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('12345678', 400, 'Dois Irmao', 'Rua Doze', 'casa azul');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('23456789', 400, 'Guabiraba', 'Rua Treze', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('34567890', 400, 'Jazira', 'Rua Vinte', 'proximo a igreja');
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('45678901', 400, 'Afiloe', 'Rua Trinta', null);
+INSERT INTO Endereco (cep, numero, bairro, rua) VALUES ('56789012', 400, 'Planua', 'Rua Nove','casa de primeiro andar');
 
 
 INSERT INTO Pessoa (cpf, nome, idade, cep, email) VALUES ('11122233344', 'João da Silva', 25, '01001000', 'joao.silva@gmail.com');
