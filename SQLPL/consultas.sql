@@ -7,7 +7,7 @@ UPDATE Pessoa
 DELETE FROM Funcionario
 	WHERE Funcionario.cpf_funcionario = (
 	SELECT Pessoa.cpf FROM Pessoa
-WHERE email LIKE 'brenno.augusto%'
+WHERE email = 'brenno.augusto@gmail.com'
 );
 
 ---- select
