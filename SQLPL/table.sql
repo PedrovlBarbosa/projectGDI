@@ -16,6 +16,7 @@ CREATE TABLE Endereco(
 	numero INTEGER,
 	bairro VARCHAR2(10),
 	rua VARCHAR2(30),
+	complemento VARCHAR2(30)
 CONSTRAINT endereco_pkey PRIMARY KEY(cep)
 );
 
