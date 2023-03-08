@@ -72,13 +72,13 @@ CREATE TABLE Cliente(
 	cpf_cliente VARCHAR2(11),
 CONSTRAINT cliente_pkey PRIMARY KEY(id_cliente),
 CONSTRAINT cliente_fkey FOREIGN KEY(cpf_cliente) REFERENCES Pessoa(cpf) ON DELETE CASCADE
+CONSTRAINT cliente_uniq UNIQUE (cpf_cliente));
 );
 
 CREATE TABLE Modelo_Carro (
-	id_modelo INTEGER,
 	modelo VARCHAR2(10) NOT NULL,
 	capacidade INTEGER,
-CONSTRAINT modelo_carro_pkey PRIMARY KEY(id_modelo)
+CONSTRAINT modelo_carro_pkey PRIMARY KEY(modelo)
 );
 
 CREATE TABLE Carro(
@@ -98,6 +98,8 @@ CREATE TABLE Desconto(
 CONSTRAINT desconto_pkey PRIMARY KEY(codigo)	
 );
 
+
+
 CREATE TABLE Vender_Promo(
 	id_cliente NUMBER,
 	matricula_funcionario NUMBER,
@@ -112,6 +114,6 @@ CONSTRAINT vender_promo_fk_chassis_carro FOREIGN KEY(chassis_carro) REFERENCES C
 CONSTRAINT vender_promo_fk_codigo_desconto FOREIGN KEY(codigo_desconto) REFERENCES Desconto(codigo) ON DELETE CASCADE
 );
 
-CREATE SEQUENCE modelo_carro_seq
+CREATE SEQUENCE id_cliente_seq
     INCREMENT BY 1 START WITH 1;
 
