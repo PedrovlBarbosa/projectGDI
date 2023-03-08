@@ -1,16 +1,3 @@
-DROP TABLE Vender_Promo;
-DROP TABLE Cliente;
-DROP TABLE Funcionario;
-DROP TABLE Telefone_pessoa;
-DROP TABLE Pessoa;
-DROP TABLE Telefone_fabrica;
-DROP TABLE Carro;
-DROP TABLE Modelo_Carro;
-DROP TABLE Fabrica;
-DROP TABLE Endereco;
-DROP TABLE Desconto;
-
-
 CREATE TABLE Endereco(
 	cep VARCHAR2(8) NOT NULL,
 	numero INTEGER,
@@ -71,8 +58,8 @@ CREATE TABLE Cliente(
 	id_cliente NUMBER NOT NULL,
 	cpf_cliente VARCHAR2(11),
 CONSTRAINT cliente_pkey PRIMARY KEY(id_cliente),
-CONSTRAINT cliente_fkey FOREIGN KEY(cpf_cliente) REFERENCES Pessoa(cpf) ON DELETE CASCADE
-CONSTRAINT cliente_uniq UNIQUE (cpf_cliente));
+CONSTRAINT cliente_fkey FOREIGN KEY(cpf_cliente) REFERENCES Pessoa(cpf) ON DELETE CASCADE,
+CONSTRAINT cliente_uniq UNIQUE (cpf_cliente)
 );
 
 CREATE TABLE Modelo_Carro (
@@ -116,4 +103,3 @@ CONSTRAINT vender_promo_fk_codigo_desconto FOREIGN KEY(codigo_desconto) REFERENC
 
 CREATE SEQUENCE id_cliente_seq
     INCREMENT BY 1 START WITH 1;
-
