@@ -27,6 +27,15 @@ SELECT P.nome AS Nome, F.salario AS Salário
 WHERE F.salario IN (2000, 3000)
 ORDER BY salario;
 
+----- avg
+SELECT ROUND(AVG(P.idade)) AS Media_idade_Funcionarios FROM Pessoa P
+	INNER JOIN Funcionario F
+	ON F.cpf_funcionario = P.cpf;
+
+----- null ou is not null
+UPDATE Endereco SET complemento = 'SEM COMPLEMENTO' 
+WHERE complemento IS NULL;
+
 ---- min
 SELECT MIN(salario)
 	FROM Funcionario;
