@@ -1,5 +1,6 @@
-
-
+---- ALTER TABLE: adiciona atributo validade para indicar se o desconto está válido.
+ALTER TABLE Desconto
+ADD (validade char(1)) DEFAULT '1';
 
 ---- create index
 CREATE INDEX indice_nome ON Pessoa(nome);
