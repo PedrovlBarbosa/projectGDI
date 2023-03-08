@@ -1,3 +1,9 @@
+
+
+
+---- create index
+CREATE INDEX indice_nome ON Pessoa(nome);
+
 --- update
 UPDATE Pessoa
 	SET email = 'joao.s@hotmail.com'
@@ -36,6 +42,26 @@ SELECT ROUND(AVG(P.idade)) AS Media_idade_Funcionarios FROM Pessoa P
 UPDATE Endereco SET complemento = 'SEM COMPLEMENTO' 
 WHERE complemento IS NULL;
 
+--- INNER JOIN
+SELECT P.nome, P.idade FROM Pessoa P
+	INNER JOIN Funcionario F
+	ON P.cpf = F.cpf_funcionario;
+
+-- ORDER BY
+SELECT salario FROM Funcionario
+ORDER BY salario DESC;
+
 ---- min
 SELECT MIN(salario)
 	FROM Funcionario;
+
+---- LIKE
+SELECT F.nome FROM Fabrica F
+	INNER JOIN Carro C
+    ON F.cnpj = C.cnpj_fabrica
+WHERE C.chassi LIKE '00003';
+
+
+
+
+
