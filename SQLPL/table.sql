@@ -1,3 +1,15 @@
+DROP TABLE Endereco;
+DROP TABLE Pessoa;
+DROP TABLE Telefone_pessoa;
+DROP TABLE Fabrica;
+DROP TABLE Telefone_fabrica;
+DROP TABLE Cliente;
+DROP TABLE Modelo_Carro;
+DROP TABLE Carro;
+DROP TABLE Desconto;
+DROP TABLE Vender_promo;
+
+
 CREATE TABLE Endereco(
 	cep VARCHAR2(8) NOT NULL,
 	numero INTEGER,
