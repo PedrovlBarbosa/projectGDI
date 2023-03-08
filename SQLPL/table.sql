@@ -97,16 +97,14 @@ CREATE TABLE Desconto(
 CONSTRAINT desconto_pkey PRIMARY KEY(codigo)	
 );
 
-
-
 CREATE TABLE Vender_Promo(
-	cpf_cliente NUMBER,
+	cpf_cliente VARCHAR2(11),
 	matricula_funcionario NUMBER,
 	chassis_carro VARCHAR(17),
 	data_venda TIMESTAMP,
 	valor NUMBER(9,2),
 	codigo_desconto VARCHAR2(20),
-CONSTRAINT vender_promo_pk PRIMARY KEY(id_cliente, matricula_funcionario, chassis_carro, data_venda),
+CONSTRAINT vender_promo_pk PRIMARY KEY(cpf_cliente, matricula_funcionario, chassis_carro, data_venda),
 CONSTRAINT vender_promo_fk_cpf_cliente FOREIGN KEY(cpf_cliente) REFERENCES Cliente(cpf_cliente) ON DELETE CASCADE,
 CONSTRAINT vender_promo_fk_matricula_funcionario FOREIGN KEY(matricula_funcionario) REFERENCES Funcionario(matricula) ON DELETE CASCADE,
 CONSTRAINT vender_promo_fk_chassis_carro FOREIGN KEY(chassis_carro) REFERENCES Carro(chassi) ON DELETE CASCADE,
