@@ -11,7 +11,11 @@ UPDATE Pessoa
 	WHERE email = 'joao.silva@gmail.com'
 
 ---- delete from 
-
+DELETE FROM Funcionario
+	WHERE Funcionario.cpf_funcionario = (
+	SELECT Pessoa.cpf FROM Pessoa
+WHERE email LIKE 'maria.silva%'
+);
 
 ---- select
 SELECT id_cliente, matricula_funcionario, chassis_carro, data_venda
