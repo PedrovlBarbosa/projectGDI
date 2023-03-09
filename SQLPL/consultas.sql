@@ -63,7 +63,6 @@ SELECT F.nome FROM Fabrica F
 WHERE C.chassi LIKE '00003';
 
 ---- MAX
-
 SELECT MAX(idade) 
 	FROM Pessoa;
 
@@ -71,8 +70,14 @@ SELECT MAX(idade)
 SELECT COUNT(CASE WHEN IDADE >25 THEN 1 END) AS Maiores_25
 	FROM PESSOA;
 
----- SUBCONSULTA COM OPERADOR RELACIONAL, AVG, ORDER BY 
+---- LEFT JOIN
+SELECT P.nome, E.rua, E.bairro, T.numero FROM Pessoa P
+	INNER JOIN Endereco E ON P.cep = E.cep 
+	LEFT OUTER JOIN Telefone_pessoa T ON P.cpf = T.cpf_pessoa 
+	WHERE P.idade >= 25;
 
+
+---- SUBCONSULTA COM OPERADOR RELACIONAL, AVG, ORDER BY 
 SELECT matricula, cpf_funcionario
 FROM Funcionario
 WHERE
@@ -83,27 +88,41 @@ WHERE
     )
 ORDER BY SALARIO;
 
-CREATE VIEW NOM_Cliente AS  --CREATE VIEW  
+--CREATE VIEW
+CREATE VIEW NOM_Cliente AS  
 	SELECT PESSOA.NOME, CLIENTE.cpf_cliente
 		FROM Cliente INNER JOIN PESSOA 
 			ON CLIENTE.cpf_cliente = PESSOA.cpf;
 
-SELECT cpf_cliente FROM Cliente -- UNION  
+-- UNION  
+SELECT cpf_cliente FROM Cliente
 	UNION SELECT cpf_funcionario FROM Funcionario;
 
--- SELECT salario, COUNT(*) FROM Funcionario -- GROUP BY, HAVING 
--- 	GROUP BY salario 
--- 	HAVING COUNT(*) > 2000
+-- HAVING, GROUP BY
+SELECT P.nome AS Nome_Funcionario, COUNT(*) AS Vendas FROM Pessoa P
+	INNER JOIN Funcionario F ON P.cpf = F.cpf_funcionario
+	INNER JOIN Vender_Promo VP ON F.matricula = VP.matricula_funcionario
+	GROUP BY P.nome
+	HAVING Count(*) > 1;
 
--- SELECT ALL modelo ---- ALL
--- 	FROM Modelo_Carro
--- 		WHERE CAPACIDADE > 5;
+--- SUBCONSULTA COM ANY
+SELECT C.Modelo, C.Ano FROM Carro C 
+	WHERE C.chassi = ANY (SELECT VP.chassis_carro FROM Vender_Promo VP WHERE VP.valor > 6500);
 
-SELECT Chassi, cnpj_fabrica AS Fabrica, Modelo, Ano, Cor --- Subconsulta com IN
+
+--- SUBCONSULTA COM ALL
+SELECT C.Modelo, C.Ano 
+FROM Carro C 
+INNER JOIN Vender_Promo VP ON C.chassi = VP.chassis_carro
+INNER JOIN Desconto D ON VP.codigo_desconto = D.codigo
+WHERE D.percentual_desconto > ALL (SELECT A.percentual_desconto FROM Desconto A WHERE A.codigo = 'DESC20');
+
+--- SUBCONSULTA COM IN
+SELECT Chassi, cnpj_fabrica AS Fabrica, Modelo, Ano, Cor
 	FROM Carro
 	WHERE Ano < '20-APR-22' AND chassi IN (SELECT chassis_carro FROM Vender_Promo 
 										WHERE valor < (SELECT AVG(VALOR) FROM Vender_Promo));
 
-
-CREATE USER JOAO IDENTIFIED BY ABCD1234; -- GRANT
+--- GRANT
+CREATE USER JOAO IDENTIFIED BY ABCD1234;
 GRANT INSERT, DELETE ON PESSOA TO JOAO;
