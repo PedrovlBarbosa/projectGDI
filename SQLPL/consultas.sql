@@ -11,7 +11,7 @@ UPDATE Pessoa
 	WHERE email = 'joao.silva@gmail.com'
 
 ---- delete from 
-DELETE FROM Pessoa WHERE cpf = '18532486985';
+
 
 ---- select
 SELECT id_cliente, matricula_funcionario, chassis_carro, data_venda
