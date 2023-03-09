@@ -62,7 +62,24 @@ SELECT F.nome FROM Fabrica F
     ON F.cnpj = C.cnpj_fabrica
 WHERE C.chassi LIKE '00003';
 
+---- MAX
 
+SELECT MAX(idade) 
+	FROM Pessoa;
 
+---- COUNT
+SELECT COUNT(CASE WHEN IDADE >25 THEN 1 END) AS Maiores_25
+	FROM PESSOA;
 
+---- SUBCONSULTA COM OPERADOR RELACIONAL, AVG, ORDER BY 
+
+SELECT matricula, cpf_funcionario
+FROM Funcionario
+WHERE
+    salario> (
+        SELECT
+            AVG(SALARIO)
+            FROM Funcionario
+    )
+ORDER BY SALARIO;
 
