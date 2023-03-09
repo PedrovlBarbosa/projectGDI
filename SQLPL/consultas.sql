@@ -83,3 +83,27 @@ WHERE
     )
 ORDER BY SALARIO;
 
+CREATE VIEW NOM_Cliente AS  --CREATE VIEW  
+	SELECT PESSOA.NOME, CLIENTE.cpf_cliente
+		FROM Cliente INNER JOIN PESSOA 
+			ON CLIENTE.cpf_cliente = PESSOA.cpf;
+
+SELECT cpf_cliente FROM Cliente -- UNION  
+	UNION SELECT cpf_funcionario FROM Funcionario;
+
+-- SELECT salario, COUNT(*) FROM Funcionario -- GROUP BY, HAVING 
+-- 	GROUP BY salario 
+-- 	HAVING COUNT(*) > 2000
+
+-- SELECT ALL modelo ---- ALL
+-- 	FROM Modelo_Carro
+-- 		WHERE CAPACIDADE > 5;
+
+SELECT Chassi, cnpj_fabrica AS Fabrica, Modelo, Ano, Cor --- Subconsulta com IN
+	FROM Carro
+	WHERE Ano < '20-APR-22' AND chassi IN (SELECT chassis_carro FROM Vender_Promo 
+										WHERE valor < (SELECT AVG(VALOR) FROM Vender_Promo));
+
+
+CREATE USER JOAO IDENTIFIED BY ABCD1234; -- GRANT
+GRANT INSERT, DELETE ON PESSOA TO JOAO;
