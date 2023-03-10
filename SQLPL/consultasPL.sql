@@ -71,3 +71,68 @@ RETURN Fabrica.nome%TYPE IS
         RETURN RespostaBusca;
     END;    
 /
+
+-- CREATE FUNCTION, IN
+CREATE OR REPLACE FUNCTION getFuncionario(
+    matricula_input IN Funcionario.matricula%TYPE
+) RETURN Funcionario%ROWTYPE IS
+    funcionarioRecord Funcionario%ROWTYPE;
+    BEGIN
+        SELECT * INTO funcionarioRecord FROM Funcionario WHERE matricula = matricula_input;
+        RETURN funcionarioRecord;
+    EXCEPTION WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+END getFuncionario;
+/
+
+----- WHILE LOOP
+DECLARE
+  i NUMBER := 1;
+  v_nome Pessoa.nome%TYPE;
+BEGIN
+  WHILE i <= 10 LOOP
+    SELECT nome INTO v_nome FROM Pessoa WHERE idade >= 18 AND ROWNUM = i;
+    DBMS_OUTPUT.PUT_LINE('Pessoa ' || i || ': ' || v_nome);
+    i := i + 1;
+  END LOOP;
+END;
+/
+
+--- SELECT INTO
+DECLARE
+  v_nome VARCHAR2(100) := 'João da Silva';
+  v_pessoa_id pessoa.cpf%TYPE;
+BEGIN
+  SELECT pessoa.cpf INTO v_pessoa_id FROM pessoa WHERE nome = v_nome;
+  DBMS_OUTPUT.PUT_LINE('O ID da pessoa ' || v_nome || ' é ' || v_pessoa_id);
+END;
+/
+
+--- CREATE OR REPLACE TRIGGER (LINHA)
+
+CREATE OR REPLACE TRIGGER aumenta_salario_funcionario
+    AFTER INSERT ON vender_promo
+    FOR EACH ROW
+DECLARE
+    valor_venda vender_promo.valor%TYPE;
+    salario_funcionario funcionario.salario%TYPE;
+BEGIN
+    SELECT valor INTO valor_venda
+    FROM vender_promo
+    WHERE valor= :NEW.valor;
+    
+    SELECT salario INTO salario_funcionario
+    FROM funcionario
+    WHERE matricula = :NEW.matricula_funcionario;
+    
+    UPDATE funcionario
+    SET salario = salario_funcionario + (valor_venda * 0.1)
+    WHERE matricula = :NEW.matricula_funcionario;
+END;
+/
+
+
+
+
+
+
