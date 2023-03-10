@@ -1,6 +1,6 @@
 -- ALTER TABLE: adiciona atributo validade para indicar se o desconto está válido.
 ALTER TABLE Desconto
-ADD (validade char(1)) DEFAULT '1';
+ADD validade char(1) DEFAULT '1';
 
 -- create index
 CREATE INDEX indice_nome ON Pessoa(nome);
@@ -8,7 +8,7 @@ CREATE INDEX indice_nome ON Pessoa(nome);
 -- update
 UPDATE Pessoa
 	SET email = 'joao.s@hotmail.com'
-	WHERE email = 'joao.silva@gmail.com'
+	WHERE email = 'joao.silva@gmail.com';
 
 -- delete from 
 DELETE FROM Funcionario
@@ -44,7 +44,7 @@ UPDATE Endereco SET complemento = 'SEM COMPLEMENTO'
 WHERE complemento IS NULL;
 
 -- INNER JOIN
-SELECT P.nome, P.idade FROM Pessoa P
+SELECT P.nome, F.matricula, P.idade FROM Pessoa P
 	INNER JOIN Funcionario F
 	ON P.cpf = F.cpf_funcionario;
 
