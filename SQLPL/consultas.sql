@@ -18,7 +18,7 @@ WHERE email LIKE 'maria.silva%'
 );
 
 -- select
-SELECT id_cliente, matricula_funcionario, chassis_carro, data_venda
+SELECT cpf_cliente, matricula_funcionario, chassis_carro, data_venda
 	FROM Vender_Promo WHERE (valor >= 7000);
 
 -- between
@@ -103,7 +103,7 @@ SELECT P.nome AS Nome_Funcionario, COUNT(*) AS Vendas FROM Pessoa P
 	INNER JOIN Funcionario F ON P.cpf = F.cpf_funcionario
 	INNER JOIN Vender_Promo VP ON F.matricula = VP.matricula_funcionario
 	GROUP BY P.nome
-	HAVING Count(*) > 1;
+	HAVING Count(*) >= 1;
 
 -- SUBCONSULTA COM ANY
 SELECT C.Modelo, C.Ano FROM Carro C 
