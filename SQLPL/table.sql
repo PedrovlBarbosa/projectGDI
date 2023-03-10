@@ -63,7 +63,7 @@ CREATE TABLE Funcionario(
 	matricula_supervisor NUMBER,
 CONSTRAINT funcionario_pkey PRIMARY KEY(matricula),
 CONSTRAINT funcionario_fkey1 FOREIGN KEY(cpf_funcionario) REFERENCES Pessoa(cpf) ON DELETE CASCADE,
-CONSTRAINT funcionario_fkey2 FOREIGN KEY(matricula_supervisor) REFERENCES Funcionario(matricula) ON DELETE CASCADE
+CONSTRAINT funcionario_fkey2 FOREIGN KEY(matricula_supervisor) REFERENCES Funcionario(matricula) ON DELETE SET NULL
 );
 
 CREATE TABLE Cliente(
