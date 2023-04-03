@@ -97,7 +97,7 @@ CREATE TYPE tp_funcionario UNDER tp_pessoa (
   CONSTRUCTOR FUNCTION tp_funcionario (funcionario tp_funcionario) RETURN SELF AS RESULT,
   MEMBER FUNCTION get_salario RETURN NUMBER,
   OVERRIDING MEMBER PROCEDURE imprimir_informacoes
-) NOT FINAL NOT INSTANTIABLE;
+);
 /
 CREATE OR REPLACE TYPE BODY tp_funcionario AS
     CONSTRUCTOR FUNCTION tp_funcionario (funcionario tp_funcionario) RETURN SELF AS RESULT IS
@@ -130,7 +130,7 @@ CREATE OR REPLACE TYPE BODY tp_funcionario AS
             dbms_output.put_line('CPF do supervisor ' || VALUE(supervisor).cpf);
 END;
 /
-CREATE TYPE tp_cliente UNDER tp_pessoa NOT FINAL NOT INSTANTIABLE (
+CREATE TYPE tp_cliente UNDER tp_pessoa (
   id_cliente NUMBER
 );
 
