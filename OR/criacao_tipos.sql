@@ -1,4 +1,4 @@
-CREATE TYPE tp_endereco AS OBJECT (
+CREATE OR REPLACE TYPE tp_endereco AS OBJECT (
   cep VARCHAR2(8),
   numero INTEGER,
   bairro VARCHAR2(10),
@@ -24,7 +24,7 @@ CREATE OR REPLACE TYPE BODY tp_endereco AS
 END;
 /
 
-CREATE TYPE tp_pessoa AS OBJECT (
+CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
   cpf VARCHAR2(11),
   nome VARCHAR2(30),
   idade INTEGER,
@@ -59,7 +59,7 @@ CREATE OR REPLACE TYPE BODY tp_pessoa AS
         END; 
 END;
 /
-CREATE TYPE tp_telefone_pessoa AS OBJECT (
+CREATE OR REPLACE TYPE tp_telefone_pessoa AS OBJECT (
   cpf_pessoa VARCHAR2(11),
   numero VARCHAR2(9),
   ddd VARCHAR(2)
@@ -67,29 +67,26 @@ CREATE TYPE tp_telefone_pessoa AS OBJECT (
 /
 CREATE OR REPLACE TYPE tp_array_telefone_pessoa AS VARRAY(3) OF tp_telefone_pessoa;
 /
-CREATE TYPE tp_fabrica AS OBJECT (
-  cnpj VARCHAR2(14),
-  nome VARCHAR2(30),
-  email VARCHAR2(30),
-  fone_fabrica tp_array_telefone
-  endereco REF tp_endereco
-);
-
-CREATE TYPE tp_telefone_fabrica AS OBJECT (
+CREATE OR REPLACE TYPE tp_telefone_fabrica AS OBJECT (
   cnpj_fabrica VARCHAR2(14),
   numero VARCHAR2(9),
   ddd VARCHAR(2)
 );
+/
+CREATE OR REPLACE TYPE tp_nt_telefone_fabrica AS TABLE OF tp_telefone_fabrica;
+/
 
-CREATE TYPE tp_telefone_fabrica AS OBJECT (
-  cnpj_fabrica VARCHAR2(11),
-  numero VARCHAR2(9),
-  ddd VARCHAR(2)
+CREATE OR REPLACE TYPE tp_fabrica AS OBJECT (
+  cnpj VARCHAR2(14),
+  nome VARCHAR2(30),
+  email VARCHAR2(30),
+  fone_fabrica tp_nt_telefone_fabrica
+  endereco REF tp_endereco
 );
 /
 CREATE OR REPLACE TYPE tp_array_telefone_fabrica AS VARRAY(3) OF tp_telefone_fabrica;
 /
-CREATE TYPE tp_funcionario UNDER tp_pessoa (
+CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
   matricula NUMBER,
   data_emissao DATE,
   salario INTEGER,
@@ -130,16 +127,16 @@ CREATE OR REPLACE TYPE BODY tp_funcionario AS
             dbms_output.put_line('CPF do supervisor ' || VALUE(supervisor).cpf);
 END;
 /
-CREATE TYPE tp_cliente UNDER tp_pessoa NOT FINAL NOT INSTANTIABLE (
+CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa NOT FINAL NOT INSTANTIABLE (
   id_cliente NUMBER
 );
 
-CREATE TYPE tp_modelo_carro AS OBJECT (
+CREATE OR REPLACE TYPE tp_modelo_carro AS OBJECT (
   modelo VARCHAR2(10),
   capacidade INTEGER
 );
 
-CREATE TYPE tp_carro AS OBJECT (
+CREATE OR REPLACE TYPE tp_carro AS OBJECT (
   chassi VARCHAR2(5),
   cnpj_fabrica VARCHAR(14),
   modelo tp_modelo_carro,
@@ -147,12 +144,12 @@ CREATE TYPE tp_carro AS OBJECT (
   cor VARCHAR2(10)
 );
 
-CREATE TYPE tp_desconto AS OBJECT (
+CREATE OR REPLACE TYPE tp_desconto AS OBJECT (
   codigo VARCHAR2(20),
   percentual_desconto INTEGER
 );
 
-CREATE TYPE tp_vender_promo AS OBJECT (
+CREATE OR REPLACE TYPE tp_vender_promo AS OBJECT (
   data_venda TIMESTAMP,
   valor NUMBER(9,2),
   cliente tp_cliente,
