@@ -94,7 +94,7 @@ CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
   CONSTRUCTOR FUNCTION tp_funcionario (funcionario tp_funcionario) RETURN SELF AS RESULT,
   MEMBER FUNCTION get_salario RETURN NUMBER,
   OVERRIDING MEMBER PROCEDURE imprimir_informacoes
-) NOT FINAL NOT INSTANTIABLE;
+);
 /
 CREATE OR REPLACE TYPE BODY tp_funcionario AS
     CONSTRUCTOR FUNCTION tp_funcionario (funcionario tp_funcionario) RETURN SELF AS RESULT IS
