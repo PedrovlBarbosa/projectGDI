@@ -46,22 +46,22 @@ INSERT INTO tb_fabrica VALUES ('35852147698',
                                (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '333' ));
                                
                                
-                               
 INSERT INTO tb_funcionario VALUES (
-        						'12568749856','ezequiel silva',25,'ezequiel@gmail.com',
-    								tp_array_telefone_pessoa(
-    									tp_telefone_pessoa(
-    										'12568749856',
-    										'869532146',
-    										'81'),
-    									tp_telefone_pessoa(
-    										'12568749856',
-    										'869532146',
-    										'81'),
-    									tp_telefone_pessoa(
-    										'12568749856',
-    										'868532146',
-    										'81')),
-    								(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '6666' ),
-    								234, TO_DATE('09/11/2014', 'dd/mm/yyyy'), 2000, null);                               
+          '12568749856','ezequiel silva',25,'ezequiel@gmail.com',
+          tp_array_telefone_pessoa(
+            tp_telefone_pessoa(
+              '12568749856',
+              '869532146',
+              '81'),
+            tp_telefone_pessoa(
+              '12568749856',
+              '869532146',
+              '81'),
+            tp_telefone_pessoa(
+              '12568749856',
+              '868532146',
+              '81')),
+          (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '6666' ),
+          234, TO_DATE('09/11/2014', 'dd/mm/yyyy'), 2000, null);                                  
+                   
                               
