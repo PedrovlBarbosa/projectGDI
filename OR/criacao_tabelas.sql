@@ -2,20 +2,26 @@ CREATE TABLE tb_endereco OF tp_endereco (
   CONSTRAINT cep_pkey PRIMARY KEY(cep)
 );
 /
+CREATE TABLE tb_telefone_pessoa OF tp_telefone_pessoa (
+  CONSTRAINT telefone_pessoa_pkey PRIMARY KEY(cpf_pessoa)
+);
+/
+CREATE TABLE tb_telefone_fabrica OF tp_telefone_fabrica (
+  CONSTRAINT tel_fab_pkey PRIMARY KEY(cnpj_fabrica)
+);
 
 CREATE TABLE tb_cliente OF tp_cliente (
   CONSTRAINT cliente_pkey PRIMARY KEY(id_cliente)
 );
 /
-
 CREATE TABLE tb_fabrica OF tp_fabrica (
-    CONSTRAINT cliente_pkey PRIMARY KEY(cnpj),
+    CONSTRAINT fabrica_pkey PRIMARY KEY(cnpj),
     endereco SCOPE IS tb_endereco
 ) NESTED TABLE fone_fabrica STORE AS tb_telefone_fabrica;
 /
 
 CREATE TABLE tb_funcionario OF tp_funcionario (
-  CONSTRAINT cliente_pkey PRIMARY KEY(matricula),
+  CONSTRAINT funcionario_pkey PRIMARY KEY(matricula),
   supervisor WITH ROWID REFERENCES tb_funcionario
 );
 /
