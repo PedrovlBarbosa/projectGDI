@@ -112,7 +112,7 @@ CREATE OR REPLACE TYPE BODY tp_funcionario AS
             RETURN salario
         END;
 
-    OVERRIDING MEMBER PROCEDURE imprimir_informacoes IS
+    OVERRIDING MEMBER PROCEDURE imprimir_informacao IS
         BEGIN
             dbms_output.put_line('CPF: ' || cpf);
             dbms_output.put_line('Nome: ' || nome);
