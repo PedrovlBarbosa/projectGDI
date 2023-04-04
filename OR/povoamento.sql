@@ -10,8 +10,8 @@ INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('3333', '3333333
 INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('4444', '444444444', '81');
 INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('5555', '555555555', '81');
 
-INSERT INTO tb_telefone_pessoa(cnpj_fabrica, numero, ddd) VALUES ('1111', '211111111', '81');
-INSERT INTO tb_telefone_pessoa(cnpj_fabrica, numero, ddd) VALUES ('2222', '322222222', '91');
-INSERT INTO tb_telefone_pessoa(cnpj_fabrica, numero, ddd) VALUES ('3333', '433333333', '82');
-INSERT INTO tb_telefone_pessoa(cnpj_fabrica, numero, ddd) VALUES ('4444', '544444444', '16');
-INSERT INTO tb_telefone_pessoa(cnpj_fabrica, numero, ddd) VALUES ('5555', '655555555', '81');
+INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('1111', '211111111', '81');
+INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('2222', '322222222', '91');
+INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('3333', '433333333', '82');
+INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('4444', '544444444', '16');
+INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('5555', '655555555', '81');
