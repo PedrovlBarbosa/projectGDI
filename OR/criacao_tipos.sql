@@ -82,8 +82,6 @@ CREATE OR REPLACE TYPE tp_fabrica AS OBJECT (
   endereco REF tp_endereco
 );
 /
-CREATE OR REPLACE TYPE tp_array_telefone_fabrica AS VARRAY(3) OF tp_telefone_fabrica;
-/
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
   matricula NUMBER,
   data_emissao DATE,
