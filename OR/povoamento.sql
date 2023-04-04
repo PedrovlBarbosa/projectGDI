@@ -23,13 +23,10 @@ INSERT INTO tb_fabrica VALUES ('099827371748',
                                'fiat', 
                                'fiat@gmail.com',
                               tp_nt_telefone_fabrica(
-                                  tp_telefone_fabrica('099827371748',
+                                  tp_telefone_fabrica('99827371748',
                                                       '864759869',
-                                                     '081'),
-                                  tp_telefone_fabrica('099827371748',
+                                                     '81'),
+                                  tp_telefone_fabrica('99827371748',
                                                       '868859869',
-                                                     '081'),
-                                
-                              ),
-                               (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '2222' )
-                             );
+                                                     '81')),
+                               (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '2222' ));
