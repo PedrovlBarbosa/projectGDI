@@ -48,7 +48,7 @@ CREATE OR REPLACE TYPE BODY tp_pessoa AS
         BEGIN 
             DBMS_OUTPUT.PUT_LINE('Nome: ' || Nome);
             DBMS_OUTPUT.PUT_LINE('CPF: ' || CPF);
-            DBMS_OUTPUT.PUT_LINE('Telefone: ' || fone_pessoa(0).ddd || fone_pessoa(0).Numero);
+            DBMS_OUTPUT.PUT_LINE('Telefone: ' || fone_pessoa(0).ddd || fone_pessoa(0).numero);
         END;
 
     ORDER MEMBER FUNCTION compara_idade (
