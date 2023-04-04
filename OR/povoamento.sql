@@ -9,21 +9,6 @@ INSERT INTO tb_endereco VALUES ('8888', '47', 'Bairro vitoria', 'rua clodoaldo',
 INSERT INTO tb_endereco VALUES ('9999', '88', 'Bairro gueiros', 'rua silva', 'na rua da orla'); 
 
 
------------------------------------------- não precisa ----------------------------
-INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('1111', '111111111', '81');
-INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('2222', '222222222', '81');
-INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('3333', '333333333', '81');
-INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('4444', '444444444', '81');
-INSERT INTO tb_telefone_pessoa(cpf_pessoa, numero, ddd) VALUES ('5555', '555555555', '81');
-
-INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('1111', '211111111', '81');
-INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('2222', '322222222', '91');
-INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('3333', '433333333', '82');
-INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('4444', '544444444', '16');
-INSERT INTO tb_telefone_fabrica(cnpj_fabrica, numero, ddd) VALUES ('5555', '655555555', '81');
---------------------------------------------------------------------------------------------
-
-
 INSERT INTO tb_fabrica VALUES ('099827371748',
                                'fiat', 
                                'fiat@gmail.com',
@@ -63,7 +48,7 @@ INSERT INTO tb_fabrica VALUES ('35852147698',
                                
                                
 INSERT INTO tb_funcionario VALUES (
-        						    '12568749856','ezequiel silva',25,'ezequiel@gmail.com',
+        						'12568749856','ezequiel silva',25,'ezequiel@gmail.com',
     								tp_array_telefone_pessoa(
     									tp_telefone_pessoa(
     										'12568749856',
