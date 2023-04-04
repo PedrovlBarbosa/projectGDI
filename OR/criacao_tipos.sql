@@ -146,6 +146,7 @@ CREATE OR REPLACE TYPE tp_desconto AS OBJECT (
 );
 /
 CREATE OR REPLACE TYPE tp_vender_promo AS OBJECT (
+  codigo VARCHAR2(20),
   data_venda TIMESTAMP,
   valor NUMBER(9,2),
   cliente tp_cliente,

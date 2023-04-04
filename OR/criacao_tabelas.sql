@@ -10,7 +10,7 @@ CREATE TABLE tb_cliente OF tp_cliente (
 
 CREATE TABLE tb_fabrica OF tp_fabrica (
     CONSTRAINT cliente_pkey PRIMARY KEY(cnpj),
-    CONSTRAINT endereco SCOPE IS tb_endereco
+    endereco SCOPE IS tb_endereco
 ) NESTED TABLE fone_fabrica STORE AS tb_telefone_fabrica;
 /
 
@@ -35,7 +35,8 @@ CREATE TABLE tb_desconto of tp_desconto (
 );
 /
 
-CREATE TABLE tb_vender OF tp_vender_promo(
-  CONSTRAINT vender_pkey PRIMARY KEY()
+CREATE TABLE tb_vender_promo OF tp_vender_promo (
+  CONSTRAINT vender_promo_pkey PRIMARY KEY(codigo)
 );
-/
+
+
