@@ -8,6 +8,12 @@ CREATE TABLE tb_cliente OF tp_cliente (
 );
 /
 
+CREATE TABLE tb_fabrica OF tp_fabrica (
+    CONSTRAINT cliente_pkey PRIMARY KEY(cnpj),
+    CONSTRAINT endereco SCOPE IS tb_endereco
+) NESTED TABLE fone_fabrica STORE AS tb_telefone_fabrica;
+/
+
 CREATE TABLE tb_funcionario OF tp_funcionario (
   CONSTRAINT cliente_pkey PRIMARY KEY(matricula),
   supervisor WITH ROWID REFERENCES tb_funcionario
