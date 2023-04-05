@@ -43,7 +43,7 @@ INSERT INTO tb_fabrica VALUES ('35852147698',
                                   tp_telefone_fabrica('35852147698',
                                                       '869877269',
                                                      '81')),
-                               (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '333' ));
+                               (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '3333' ));
      
 INSERT INTO tb_cliente VALUES (
 		'53267498565','renan da towner',38,'renanzinhos2@gmail.com',
@@ -56,7 +56,7 @@ INSERT INTO tb_cliente VALUES (
               '53267498565',
               '963532146',
               '81')),
-    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '8888' ), 2565);
+    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '4444' ), 2565);
 
 INSERT INTO tb_cliente VALUES (
 		'85624498565','rogerinho do ingá',42,'rogerinho@gmail.com',
@@ -69,7 +69,7 @@ INSERT INTO tb_cliente VALUES (
               '85624498565',
               '897532146',
               '81')),
-    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '7777' ), 2885); 
+    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '5555' ), 2885); 
 	
 INSERT INTO tb_cliente VALUES (
 		'65247498565','julinho da van',22,'julinho@gmail.com',
@@ -82,7 +82,7 @@ INSERT INTO tb_cliente VALUES (
               '65247498565',
               '894579146',
               '81')),
-    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '9999' ), 28442); 
+    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '6666' ), 28442); 
 
 
 INSERT INTO tb_funcionario VALUES (
@@ -100,7 +100,7 @@ INSERT INTO tb_funcionario VALUES (
               '12568749856',
               '868532146',
               '81')),
-          (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '6666' ),
+          (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '7777' ),
           234, TO_DATE('09/11/2014', 'dd/mm/yyyy'), 2000, null);                                  
                    
 INSERT INTO tb_funcionario VALUES (
@@ -114,7 +114,7 @@ INSERT INTO tb_funcionario VALUES (
               '88587498565',
               '632532146',
               '81')),
-          (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '7777' ),
+          (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '8888' ),
           256, TO_DATE('09/11/2016', 'dd/mm/yyyy'), 2260, null); 
 
                           
