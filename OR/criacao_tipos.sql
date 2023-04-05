@@ -135,7 +135,7 @@ CREATE OR REPLACE TYPE tp_modelo_carro AS OBJECT (
 CREATE OR REPLACE TYPE tp_carro AS OBJECT (
   chassi VARCHAR2(5),
   cnpj_fabrica VARCHAR(14),
-  modelo tp_modelo_carro,
+  modelo REF tp_modelo_carro,
   ano DATE,
   cor VARCHAR2(10)
 );
@@ -149,8 +149,8 @@ CREATE OR REPLACE TYPE tp_vender_promo AS OBJECT (
   codigo VARCHAR2(20),
   data_venda TIMESTAMP,
   valor NUMBER(9,2),
-  cliente tp_cliente,
-  funcionario tp_funcionario,
-  carro tp_carro,
+  cliente REF tp_cliente,
+  funcionario REF tp_funcionario,
+  carro REF tp_carro,
   desconto tp_desconto
 );
