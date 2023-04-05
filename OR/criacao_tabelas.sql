@@ -32,17 +32,16 @@ CREATE TABLE tb_modelo_carro OF tp_modelo_carro (
 /
 
 CREATE TABLE tb_carro OF tp_carro (
-  CONSTRAINT carro_pkey PRIMARY KEY(chassi) 
-);
-/
-
-CREATE TABLE tb_desconto of tp_desconto (
-  CONSTRAINT desconto_pkey PRIMARY KEY(codigo)
+  CONSTRAINT carro_pkey PRIMARY KEY(chassi), 
+  modelo WITH ROWID REFERENCES tb_modelo_carro
 );
 /
 
 CREATE TABLE tb_vender_promo OF tp_vender_promo (
-  CONSTRAINT vender_promo_pkey PRIMARY KEY(codigo)
+  CONSTRAINT vender_promo_pkey PRIMARY KEY(codigo),
+  cliente WITH ROWID REFERENCES tb_cliente,
+  funcionario WITH ROWID REFERENCES tb_funcionario,
+  carro WITH ROWID REFERENCES tb_carro
 );
 
 
