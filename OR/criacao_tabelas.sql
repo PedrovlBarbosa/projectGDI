@@ -33,7 +33,8 @@ CREATE TABLE tb_modelo_carro OF tp_modelo_carro (
 
 CREATE TABLE tb_carro OF tp_carro (
   CONSTRAINT carro_pkey PRIMARY KEY(chassi), 
-  modelo WITH ROWID REFERENCES tb_modelo_carro
+  modelo WITH ROWID REFERENCES tb_modelo_carro,
+  cnpj_fabrica WITH ROWID REFERENCES tb_fabrica
 );
 /
 
