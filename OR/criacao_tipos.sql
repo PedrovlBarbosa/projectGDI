@@ -16,7 +16,7 @@ ADD ATTRIBUTE numero NUMBER CASCADE;
 
 CREATE OR REPLACE TYPE BODY tp_endereco AS
     FINAL MAP MEMBER FUNCTION get_cep RETURN VARCHAR IS
-        cep_endereco VARCHAR(50) := cep;
+        cep_endereco VARCHAR(8) := cep;
     BEGIN
         RETURN cep;
     END;
