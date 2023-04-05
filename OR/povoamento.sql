@@ -50,11 +50,11 @@ INSERT INTO tb_cliente VALUES (
           tp_array_telefone_pessoa(
             tp_telefone_pessoa(
               '53267498565',
-              '528832146',
+              '528559146',
               '81'),
             tp_telefone_pessoa(
               '53267498565',
-              '963532146',
+              '961263146',
               '81')),
     	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '4444' ), 2565);
 
