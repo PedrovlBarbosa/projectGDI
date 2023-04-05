@@ -134,10 +134,10 @@ CREATE OR REPLACE TYPE tp_modelo_carro AS OBJECT (
 /
 CREATE OR REPLACE TYPE tp_carro AS OBJECT (
   chassi VARCHAR2(5),
-  cnpj_fabrica VARCHAR(14),
-  modelo REF tp_modelo_carro,
   ano DATE,
-  cor VARCHAR2(10)
+  cor VARCHAR2(10),
+  cnpj_fabrica REF tp_fabrica,
+  modelo REF tp_modelo_carro
 );
 /
 CREATE OR REPLACE TYPE tp_desconto AS OBJECT (

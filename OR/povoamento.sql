@@ -77,4 +77,13 @@ INSERT INTO tb_funcionario VALUES (
               '81')),
           (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '7777' ),
           256, TO_DATE('09/11/2016', 'dd/mm/yyyy'), 2260, null); 
-                              
+
+INSERT INTO tb_modelo_carro VALUES ('GOL', 5);                              
+INSERT INTO tb_modelo_carro VALUES ('UNO', 18);
+INSERT INTO tb_modelo_carro VALUES ('ECOSPORT', 5);  
+INSERT INTO tb_modelo_carro VALUES ('FUSCA', 4);  
+INSERT INTO tb_modelo_carro VALUES ('KOMBI', 12);  
+
+INSERT INTO tb_carro VALUES ('1010', TO_DATE('2016', 'yyyy'), 'Amarelo', 
+                            (SELECT REF(F) FROM tb_fabrica F WHERE F.cnpj = '099827371748'),
+                            (SELECT REF(M) FROM tb_modelo_carro M WHERE M.modelo = 'UNO'));
