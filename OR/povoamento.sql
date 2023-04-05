@@ -1,12 +1,12 @@
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('1111', 11, 'Bairro 1', 'rua 1', 'em frente ao mercado'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('2222', 22, 'Bairro 2', 'rua 2', 'em frente ao armazem'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('3333', 33, 'Bairro 3', 'rua 3', 'em frente ao zoologico'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('4444', 44, 'Bairro 4', 'rua 4', 'em frente ao presidio'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('5555', 55, 'Bairro 5', 'rua 5', 'em frente ao predio'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('6666', 53, 'Bairro c', 'rua soldadinho', 'proximo à capela'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('7777', 32, 'Bairro m', 'rua baoba', 'proxímo à praça'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('8888', 47, 'Bairro v', 'rua clodoaldo', 'em frente ao mercado'); 
-INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('9999', 88, 'Bairro g', 'rua silva', 'na rua da orla'); 
+INSERT INTO tb_endereco VALUES ('1111', '11', 'Bairro 1', 'rua 1', 'em frente ao mercado'); 
+INSERT INTO tb_endereco VALUES ('2222', '22', 'Bairro 2', 'rua 2', 'em frente ao armazem'); 
+INSERT INTO tb_endereco VALUES ('3333', '33', 'Bairro 3', 'rua 3', 'em frente ao zoologico'); 
+INSERT INTO tb_endereco VALUES ('4444', '44', 'Bairro 4', 'rua 4', 'em frente ao presidio'); 
+INSERT INTO tb_endereco VALUES ('5555', '55', 'Bairro 5', 'rua 5', 'em frente ao predio'); 
+INSERT INTO tb_endereco VALUES ('6666', '53', 'Bairro capital', 'rua soldadinho', 'proximo à capela'); 
+INSERT INTO tb_endereco VALUES ('7777', '32', 'Bairro matinhos', 'rua baoba', 'proxímo à praça'); 
+INSERT INTO tb_endereco VALUES ('8888', '47', 'Bairro vitoria', 'rua clodoaldo', 'em frente ao mercado'); 
+INSERT INTO tb_endereco VALUES ('9999', '88', 'Bairro gueiros', 'rua silva', 'na rua da orla'); 
 
 
 INSERT INTO tb_fabrica VALUES ('099827371748',
@@ -44,8 +44,34 @@ INSERT INTO tb_fabrica VALUES ('35852147698',
                                                       '869877269',
                                                      '81')),
                                (SELECT REF(E) FROM tb_endereco E WHERE E.cep = '333' ));
-                         
-                               
+     
+INSERT INTO tb_cliente VALUES (
+		'53267498565','renan da towner',22,'renanzinhos2@gmail.com',
+          tp_array_telefone_pessoa(
+            tp_telefone_pessoa(
+              '53267498565',
+              '528832146',
+              '81'),
+            tp_telefone_pessoa(
+              '53267498565',
+              '963532146',
+              '81')),
+    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '8888' ), 2565);
+
+INSERT INTO tb_cliente VALUES (
+		'85624498565','rogerinho do ingá',22,'rogerinho@gmail.com',
+          tp_array_telefone_pessoa(
+            tp_telefone_pessoa(
+              '85624498565',
+              '528832146',
+              '81'),
+            tp_telefone_pessoa(
+              '85624498565',
+              '897532146',
+              '81')),
+    	(SELECT REF(E) FROM tb_endereco E WHERE E.cep = '777' ), 2885);                               
+
+
 INSERT INTO tb_funcionario VALUES (
           '12568749856','ezequiel silva',25,'ezequiel@gmail.com',
           tp_array_telefone_pessoa(
@@ -87,3 +113,17 @@ INSERT INTO tb_modelo_carro VALUES ('KOMBI', 12);
 INSERT INTO tb_carro VALUES ('1010', TO_DATE('2016', 'yyyy'), 'Amarelo', 
                             (SELECT REF(F) FROM tb_fabrica F WHERE F.cnpj = '099827371748'),
                             (SELECT REF(M) FROM tb_modelo_carro M WHERE M.modelo = 'UNO'));
+                            
+INSERT INTO tb_vender_promo VALUES ('56821479632584', 
+        TO_DATE('09/12/2019', 'dd/mm/yyyy'),
+        25900,
+        (SELECT REF(M) FROM tb_carro M WHERE M.chassi = '1010'),
+        (SELECT REF(C) FROM tb_cliente C  WHERE C.cpf = '85624498565')
+        (SELECT REF(F) FROM tb_funcionario F WHERE F.cpf = '88587498565'),
+         tp_desconto(
+            '184844656',
+            20));                            
+                            
+                            
+                            
+                            
