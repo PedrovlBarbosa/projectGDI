@@ -1,156 +1,194 @@
-CREATE OR REPLACE TYPE tp_endereco AS OBJECT (
-  cep VARCHAR2(8),
-  numero INTEGER,
-  bairro VARCHAR2(10),
-  rua VARCHAR2(30),
-  complemento VARCHAR2(30),
-  FINAL MAP MEMBER FUNCTION get_cep RETURN VARCHAR
-);
-/
-ALTER TYPE tp_endereco
-DROP ATTRIBUTE numero INVALIDATE;
-/
-ALTER TYPE tp_endereco
-ADD ATTRIBUTE numero NUMBER CASCADE;
+CREATE OR REPLACE TYPE TP_ENDERECO AS
+  OBJECT (
+    CEP VARCHAR2(8),
+    NUMERO INTEGER,
+    BAIRRO VARCHAR2(10),
+    RUA VARCHAR2(30),
+    COMPLEMENTO VARCHAR2(30),
+    FINAL MAP MEMBER FUNCTION GET_CEP RETURN VARCHAR
+  );
 /
 
-CREATE OR REPLACE TYPE BODY tp_endereco AS
-    FINAL MAP MEMBER FUNCTION get_cep RETURN VARCHAR IS
-        cep_endereco VARCHAR(8) := cep;
+ALTER TYPE TP_ENDERECO DROP ATTRIBUTE NUMERO INVALIDATE;
+
+/
+
+ALTER TYPE TP_ENDERECO ADD ATTRIBUTE NUMERO NUMBER CASCADE;
+
+/
+
+CREATE OR REPLACE TYPE BODY TP_ENDERECO AS
+  FINAL MAP MEMBER FUNCTION GET_CEP RETURN VARCHAR IS
+    CEP_ENDERECO VARCHAR(8) := CEP;
+  BEGIN
+    RETURN CEP;
+  END;
+END;
+/
+
+CREATE OR REPLACE TYPE TP_TELEFONE_PESSOA AS
+  OBJECT (
+    CPF_PESSOA VARCHAR2(11),
+    NUMERO VARCHAR2(9),
+    DDD VARCHAR(2)
+  );
+/
+
+CREATE OR REPLACE TYPE TP_ARRAY_TELEFONE_PESSOA AS
+  VARRAY(
+    3
+  ) OF TP_TELEFONE_PESSOA;
+/
+
+CREATE OR REPLACE TYPE TP_PESSOA AS
+  OBJECT (
+    CPF VARCHAR2(11),
+    NOME VARCHAR2(30),
+    IDADE INTEGER,
+    EMAIL VARCHAR2(40),
+    FONE_PESSOA TP_ARRAY_TELEFONE_PESSOA,
+    ENDERECO REF TP_ENDERECO,
+    MEMBER PROCEDURE IMPRIMIR_INFORMACAO,
+    ORDER MEMBER FUNCTION COMPARA_IDADE ( SELF IN OUT NOCOPY TP_PESSOA, E TP_PESSOA ) RETURN NUMBER
+  ) NOT FINAL NOT INSTANTIABLE;
+/
+
+CREATE OR REPLACE TYPE BODY TP_PESSOA AS
+  MEMBER PROCEDURE IMPRIMIR_INFORMACAO (
+    SELF IN OUT NOCOPY TP_PESSOA
+  ) IS
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('Nome: '
+      || NOME);
+    DBMS_OUTPUT.PUT_LINE('CPF: '
+      || CPF);
+    DBMS_OUTPUT.PUT_LINE('Telefone: '
+      || FONE_PESSOA(0).DDD
+      || FONE_PESSOA(0).NUMERO);
+  END;
+  ORDER MEMBER FUNCTION COMPARA_IDADE (
+    SELF IN OUT NOCOPY TP_PESSOA,
+    E TP_PESSOA
+  ) RETURN NUMBER IS
+  BEGIN
+    IF SELF.IDADE < E.IDADE THEN
+      RETURN -1;
+    ELSIF SELF.IDADE > E.IDADE THEN
+      RETURN 1;
+    ELSE
+      RETURN 0;
+    END IF;
+  END;
+END;
+/
+
+CREATE OR REPLACE TYPE TP_TELEFONE_FABRICA AS
+  OBJECT (
+    CNPJ_FABRICA VARCHAR2(14),
+    NUMERO VARCHAR2(9),
+    DDD VARCHAR(2)
+  );
+/
+
+CREATE OR REPLACE TYPE TP_NT_TELEFONE_FABRICA AS
+  TABLE OF TP_TELEFONE_FABRICA;
+/
+
+CREATE OR REPLACE TYPE TP_FABRICA AS
+  OBJECT (
+    CNPJ VARCHAR2(14),
+    NOME VARCHAR2(30),
+    EMAIL VARCHAR2(30),
+    FONE_FABRICA TP_NT_TELEFONE_FABRICA,
+    ENDERECO REF TP_ENDERECO
+  );
+/
+
+CREATE OR REPLACE TYPE TP_FUNCIONARIO UNDER TP_PESSOA (
+  MATRICULA NUMBER,
+  DATA_EMISSAO DATE,
+  SALARIO INTEGER,
+  SUPERVISOR REF TP_FUNCIONARIO,
+  CONSTRUCTOR FUNCTION TP_FUNCIONARIO (FUNCIONARIO TP_FUNCIONARIO) RETURN SELF AS RESULT,
+  MEMBER FUNCTION GET_SALARIO RETURN NUMBER,
+  OVERRIDING MEMBER PROCEDURE IMPRIMIR_INFORMACAO
+);
+/
+
+CREATE OR REPLACE TYPE BODY TP_FUNCIONARIO AS
+  CONSTRUCTOR FUNCTION TP_FUNCIONARIO (
+    FUNCIONARIO TP_FUNCIONARIO
+  ) RETURN SELF AS
+    RESULT       IS
+      BEGIN CPF := FUNCIONARIO.CPF;
+    NOME         := FUNCIONARIO.NOME;
+    IDADE        := FUNCIONARIO.IDADE;
+    MATRICULA    := FUNCIONARIO.MATRICULA;
+    TELEFONE     := FUNCIONARIO.TELEFONE;
+    ENDERECO     := FUNCIONARIO.ENDERECO;
+    DATA_EMISSAO := FUNCIONARIO.DATA_EMISSAO;
+    SALARIO      := FUNCIONARIO.SALARIO;
+    SUPERVISOR   := FUNCIONARIO.SUPERVISOR;
+    RETURN      ;
+  END;
+  MEMBER FUNCTION GET_SALARIO RETURN NUMBER IS
+  BEGIN
+    RETURN SALARIO END;
+    OVERRIDING MEMBER PROCEDURE IMPRIMIR_INFORMACAO IS
     BEGIN
-        RETURN cep;
+      DBMS_OUTPUT.PUT_LINE('CPF: '
+        || CPF);
+      DBMS_OUTPUT.PUT_LINE('Nome: '
+        || NOME);
+      DBMS_OUTPUT.PUT_LINE('Salario: '
+        || SALARIO);
+      DBMS_OUTPUT.PUT_LINE('Idade: '
+        || IDADE);
+      DBMS_OUTPUT.PUT_LINE('Data admissão: '
+        || DATA_EMISSAO);
+      DBMS_OUTPUT.PUT_LINE('Telefone primário: '
+        || TELEFONE(0));
+      DBMS_OUTPUT.PUT_LINE('CPF do supervisor '
+        || VALUE(SUPERVISOR).CPF);
     END;
-END;
-/
-CREATE OR REPLACE TYPE tp_telefone_pessoa AS OBJECT (
-  cpf_pessoa VARCHAR2(11),
-  numero VARCHAR2(9),
-  ddd VARCHAR(2)
-);
-/
-CREATE OR REPLACE TYPE tp_array_telefone_pessoa AS VARRAY(3) OF tp_telefone_pessoa;
-/
-CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
-  cpf VARCHAR2(11),
-  nome VARCHAR2(30),
-  idade INTEGER,
-  email VARCHAR2(40),
-  fone_pessoa tp_array_telefone_pessoa,
-  endereco REF tp_endereco,
-  MEMBER PROCEDURE imprimir_informacao,
-  ORDER MEMBER FUNCTION compara_idade (
-      SELF IN OUT NOCOPY tp_pessoa, e tp_pessoa
-  ) RETURN NUMBER
-) NOT FINAL NOT INSTANTIABLE;
-/
-CREATE OR REPLACE TYPE BODY tp_pessoa AS
-    MEMBER PROCEDURE imprimir_informacao (SELF IN OUT NOCOPY tp_pessoa) IS
-        BEGIN 
-            DBMS_OUTPUT.PUT_LINE('Nome: ' || Nome);
-            DBMS_OUTPUT.PUT_LINE('CPF: ' || CPF);
-            DBMS_OUTPUT.PUT_LINE('Telefone: ' || fone_pessoa(0).ddd || fone_pessoa(0).numero);
-        END;
-
-    ORDER MEMBER FUNCTION compara_idade (
-        SELF IN OUT NOCOPY tp_pessoa, e tp_pessoa
-    ) RETURN NUMBER IS
-        BEGIN
-            IF SELF.idade < e.idade THEN 
-                RETURN -1;
-            ELSIF SELF.idade > e.idade THEN 
-                RETURN 1;
-            ELSE 
-                RETURN 0;
-            END IF;
-        END; 
-END;
-/
-CREATE OR REPLACE TYPE tp_telefone_fabrica AS OBJECT (
-  cnpj_fabrica VARCHAR2(14),
-  numero VARCHAR2(9),
-  ddd VARCHAR(2)
-);
-/
-CREATE OR REPLACE TYPE tp_nt_telefone_fabrica AS TABLE OF tp_telefone_fabrica;
 /
 
-CREATE OR REPLACE TYPE tp_fabrica AS OBJECT (
-  cnpj VARCHAR2(14),
-  nome VARCHAR2(30),
-  email VARCHAR2(30),
-  fone_fabrica tp_nt_telefone_fabrica,
-  endereco REF tp_endereco
+CREATE OR REPLACE TYPE TP_CLIENTE UNDER TP_PESSOA (
+  ID_CLIENTE NUMBER
 );
 /
-CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
-  matricula NUMBER,
-  data_emissao DATE,
-  salario INTEGER,
-  supervisor REF tp_funcionario,
-  CONSTRUCTOR FUNCTION tp_funcionario (funcionario tp_funcionario) RETURN SELF AS RESULT,
-  MEMBER FUNCTION get_salario RETURN NUMBER,
-  OVERRIDING MEMBER PROCEDURE imprimir_informacao
-);
-/
-CREATE OR REPLACE TYPE BODY tp_funcionario AS
-    CONSTRUCTOR FUNCTION tp_funcionario (funcionario tp_funcionario) RETURN SELF AS RESULT IS
-        BEGIN
-            CPF := funcionario.CPF;
-            nome := funcionario.nome;
-            idade := funcionario.idade;
-            matricula := funcionario.matricula;
-            telefone := funcionario.telefone;
-            endereco := funcionario.endereco;
-            data_emissao := funcionario.data_emissao;
-            salario := funcionario.salario;
-            supervisor := funcionario.supervisor;
-            RETURN;
-        END;
 
-    MEMBER FUNCTION get_salario RETURN NUMBER IS
-        BEGIN
-            RETURN salario
-        END;
+CREATE OR REPLACE TYPE TP_MODELO_CARRO AS
+  OBJECT (
+    MODELO VARCHAR2(10),
+    CAPACIDADE INTEGER
+  );
+/
 
-    OVERRIDING MEMBER PROCEDURE imprimir_informacao IS
-        BEGIN
-            dbms_output.put_line('CPF: ' || cpf);
-            dbms_output.put_line('Nome: ' || nome);
-            dbms_output.put_line('Salario: ' || salario);
-            dbms_output.put_line('Idade: ' || idade);
-            dbms_output.put_line('Data admissão: ' || data_emissao);
-            dbms_output.put_line('Telefone primário: ' || telefone(0));
-            dbms_output.put_line('CPF do supervisor ' || VALUE(supervisor).cpf);
-END;
+CREATE OR REPLACE TYPE TP_CARRO AS
+  OBJECT (
+    CHASSI VARCHAR2(5),
+    ANO DATE,
+    COR VARCHAR2(10),
+    CNPJ_FABRICA REF TP_FABRICA,
+    MODELO REF TP_MODELO_CARRO
+  );
 /
-CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
-  id_cliente NUMBER
-);
+
+CREATE OR REPLACE TYPE TP_DESCONTO AS
+  OBJECT (
+    CODIGO VARCHAR2(20),
+    PERCENTUAL_DESCONTO INTEGER
+  );
 /
-CREATE OR REPLACE TYPE tp_modelo_carro AS OBJECT (
-  modelo VARCHAR2(10),
-  capacidade INTEGER
-);
-/
-CREATE OR REPLACE TYPE tp_carro AS OBJECT (
-  chassi VARCHAR2(5),
-  ano DATE,
-  cor VARCHAR2(10),
-  cnpj_fabrica REF tp_fabrica,
-  modelo REF tp_modelo_carro
-);
-/
-CREATE OR REPLACE TYPE tp_desconto AS OBJECT (
-  codigo VARCHAR2(20),
-  percentual_desconto INTEGER
-);
-/
-CREATE OR REPLACE TYPE tp_vender_promo AS OBJECT (
-  codigo VARCHAR2(20),
-  data_venda TIMESTAMP,
-  valor NUMBER(9,2),
-  cliente REF tp_cliente,
-  funcionario REF tp_funcionario,
-  carro REF tp_carro,
-  desconto tp_desconto
-);
+
+CREATE OR REPLACE TYPE TP_VENDER_PROMO AS
+  OBJECT (
+    CODIGO VARCHAR2(20),
+    DATA_VENDA TIMESTAMP,
+    VALOR NUMBER(9, 2),
+    CLIENTE REF TP_CLIENTE,
+    FUNCIONARIO REF TP_FUNCIONARIO,
+    CARRO REF TP_CARRO,
+    DESCONTO TP_DESCONTO
+  );
