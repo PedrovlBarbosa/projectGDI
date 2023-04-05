@@ -1,11 +1,5 @@
 -- MAP MEMBER FUNCTION get_cep()
-DECLARE cp tp_endereco;
-BEGIN
-SELECT VALUE(e) INTO cp FROM tb_endereco e
-WHERE e.rua = 'rua soldadinho';
-cp.get_cep();
-END;
-/
+SELECT e.get_cep() FROM tb_endereco e WHERE e.rua = 'rua soldadinho';
 
 -- MEMBER FUNCTION get_salario()
 SELECT F.GET_SALARIO() FROM tb_funcionario F WHERE F.matricula = '88587498565';
