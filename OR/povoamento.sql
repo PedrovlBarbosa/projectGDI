@@ -1,12 +1,12 @@
-INSERT INTO tb_endereco VALUES ('1111', 11, 'Bairro 1', 'rua 1', 'em frente ao mercado'); 
-INSERT INTO tb_endereco VALUES ('2222', 22, 'Bairro 2', 'rua 2', 'em frente ao armazem'); 
-INSERT INTO tb_endereco VALUES ('3333', 33, 'Bairro 3', 'rua 3', 'em frente ao zoologico'); 
-INSERT INTO tb_endereco VALUES ('4444', 44, 'Bairro 4', 'rua 4', 'em frente ao presidio'); 
-INSERT INTO tb_endereco VALUES ('5555', 55, 'Bairro 5', 'rua 5', 'em frente ao predio'); 
-INSERT INTO tb_endereco VALUES ('6666', 53, 'Bairro capital', 'rua soldadinho', 'proximo à capela'); 
-INSERT INTO tb_endereco VALUES ('7777', 32, 'Bairro matinhos', 'rua baoba', 'proxímo à praça'); 
-INSERT INTO tb_endereco VALUES ('8888', 47, 'Bairro vitoria', 'rua clodoaldo', 'em frente ao mercado'); 
-INSERT INTO tb_endereco VALUES ('9999', 88, 'Bairro gueiros', 'rua silva', 'na rua da orla'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('1111', 11, 'Bairro 1', 'rua 1', 'em frente ao mercado'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('2222', 22, 'Bairro 2', 'rua 2', 'em frente ao armazem'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('3333', 33, 'Bairro 3', 'rua 3', 'em frente ao zoologico'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('4444', 44, 'Bairro 4', 'rua 4', 'em frente ao presidio'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('5555', 55, 'Bairro 5', 'rua 5', 'em frente ao predio'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('6666', 53, 'Bairro c', 'rua soldadinho', 'proximo à capela'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('7777', 32, 'Bairro m', 'rua baoba', 'proxímo à praça'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('8888', 47, 'Bairro v', 'rua clodoaldo', 'em frente ao mercado'); 
+INSERT INTO tb_endereco(cep, numero, bairro, rua, complemento) VALUES ('9999', 88, 'Bairro g', 'rua silva', 'na rua da orla'); 
 
 
 INSERT INTO tb_fabrica VALUES ('099827371748',
