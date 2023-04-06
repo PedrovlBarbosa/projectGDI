@@ -1,16 +1,16 @@
 -- MAP MEMBER FUNCTION get_cep()
 SELECT e.get_cep() FROM tb_endereco e WHERE e.rua = 'rua soldadinho';
-
+/
 -- MEMBER FUNCTION get_salario()
 SELECT F.GET_SALARIO() FROM tb_funcionario F WHERE F.matricula = 256;
-
+/
 -- OVERRIDING MEMBER PROCEDURE
 DECLARE funcionario TP_FUNCIONARIO;
 BEGIN
     SELECT VALUE(F) INTO funcionario FROM TB_FUNCIONARIO F WHERE salario = 2000;
     funcionario.IMPRIMIR_INFORMACAO();
 END;
-
+/
 -- OVERRIDING/ORDER MEMBER FUNCTION
 DECLARE 
     aux NUMBER;
