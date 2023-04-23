@@ -69,5 +69,62 @@ db.catalogo.insertMany([
             $ref: "categorias",
             $id: db.categorias.findOne({name: "camisa"})._id
         }
+    },
+    {
+        "name": "Camiseta cropped",
+        "descrição": "Camisa de algodão no estilo cropped",
+        "tamando": ["P", "M"],
+        "preco": 89.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "camisa"})._id
+        }
+    },
+    {
+        "name": "Short tectel",
+        "descrição": "Short em material leve e sintetico. Ideal para a praia",
+        "tamanho": ["P","M","G"],
+        "preco": 99.00,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "shorts"})
+        }
+    },
+    {
+        "name": "Cueca box",
+        "descrição": "Cueca do modelo box em material de algodão",
+        "tamanho": ["M","G","GG"],
+        "preco": 45.00,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({"cuecas"})
+        }
+    },
+    {
+        "name": "Sutiã",
+        "descrição": "Sutiã de material sintetico",
+        "tamanho": ["P", "M", "G"],
+        "preco": 60.00,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({"lingerie"})
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 ]);
