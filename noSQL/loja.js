@@ -111,14 +111,14 @@ db.lojas.insertOne({
         {
             "produto": {
                 $ref: "catalogo",
-                $id: db.catalogo.findOne({name: "Shorts"})._id   
+                $id: db.catalogo.findOne({name: "Short tetel"})._id   
             },
             "quantidade" : 16
         },
         {
             "produto": {
                 $ref:"catalogo",
-                $id: db.catalogo.findOne({name: "Camisa"})._id
+                $id: db.catalogo.findOne({name: "Camiseta Basica"})._id
             },
             "quantidade": 19
         }
