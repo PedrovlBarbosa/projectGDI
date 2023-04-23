@@ -82,3 +82,54 @@ db.lojas.insertOne({
         },
     ]
 });
+
+db.lojas.insertOne({
+    "nome" : "Loja 5",
+    "endereco": "Rua das artes, 302 - Boa Vista, Recife - PE",
+    "produtos": [
+        {
+            "produto": {
+                $ref: "catalogo",
+                $id: db.catalogo.findOne({name: "Cueca box"})._id   
+            },
+            "quantidade" : 20
+        },
+        {
+            "produto": {
+                $ref:"catalogo",
+                $id: db.catalogo.findOne({name: "Sutiã"})._id
+            },
+            "quantidade": 19
+        }
+    ]
+});
+
+db.lojas.insertOne({
+    "nome" : "Loja 6",
+    "endereco": "Rua das cirandas, 40 - Derby, Recife - PE",
+    "produtos": [
+        {
+            "produto": {
+                $ref: "catalogo",
+                $id: db.catalogo.findOne({name: "Shorts"})._id   
+            },
+            "quantidade" : 16
+        },
+        {
+            "produto": {
+                $ref:"catalogo",
+                $id: db.catalogo.findOne({name: "Camisa"})._id
+            },
+            "quantidade": 19
+        }
+    ]
+});
+
+
+
+
+
+
+
+
+
