@@ -109,22 +109,5 @@ db.catalogo.insertMany([
             $ref: "categorias",
             $id: db.categorias.findOne({"lingerie"})
         }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }    
 ]);
