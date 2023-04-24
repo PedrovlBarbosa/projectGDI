@@ -18,30 +18,16 @@ db.catalogo.find({
 //[Gte]
 db.categoria.find({
   "ano": {
-    $gte: 2020
+    $gte: "2020"
   }
 })
 
 //[aggregate]
-db.courses.aggregate([{
-  $unwind: {
-      path: '$assistantList',
-  }
-}, {
-  $unwind: {
-      path: '$assistantList.availabilityList',
-  }
-}, {
+db.catalogo.aggregate([{
   $group: {
-      _id: '$assistantList.name',
-      hours: {
-          $sum: '$assistantList.availabilityList.durationInMinutes'
+      _id:null, 
+      mediaDosPrecos: {
+          $avg:"$preco"
       }
-  }
-}, {
-  $sort: {
-      hours: -1
-  }
-}, {
-  $limit: 3
+  } 
 }])
