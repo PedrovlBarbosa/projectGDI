@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a611"
+  },
+  "name": "vestidos",
+  "fabricado": "brasil",
+  "marca": "Floratta Modas",
+  "ano": "2022",
+  "genero": "feminino"
+},{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a612"
+  },
+  "name": "blusas",
+  "fabricado": "brasil",
+  "marca": "Arte em Crochê",
+  "ano": "2021",
+  "genero": "feminino"
+},{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a613"
+  },
+  "name": "saias",
+  "fabricado": "argentina",
+  "marca": "Moda Feminina",
+  "ano": "2021",
+  "genero": "feminino"
+},{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a614"
+  },
+  "name": "camisetas",
+  "fabricado": "china",
+  "marca": "Basic Wear",
+  "ano": "2021",
+  "genero": "masculino"
+},{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a615"
+  },
+  "name": "calcas",
+  "fabricado": "india",
+  "marca": "Denim Company",
+  "ano": "2020",
+  "genero": "masculino"
+},{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a616"
+  },
+  "name": "bermudas",
+  "fabricado": "bangladesh",
+  "marca": "Outdoor Adventures",
+  "ano": "2022",
+  "genero": "masculino"
+},{
+  "_id": {
+    "$oid": "6445f65dafb8a7e54ed3a617"
+  },
+  "name": "camisa",
+  "fabricado": "brasil",
+  "marca": "Hering",
+  "ano": "2023",
+  "genero": "masculino"
+}]

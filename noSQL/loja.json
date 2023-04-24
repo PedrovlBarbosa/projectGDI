@@ -1,0 +1,105 @@
+[{
+  "_id": {
+    "$oid": "6445f692afb8a7e54ed3a61f"
+  },
+  "nome": "Loja 1",
+  "endereco": "Rua das Flores, 123 - Centro, São Paulo - SP",
+  "produtos": [
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a618"
+        }
+      },
+      "quantidade": 50
+    },
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a619"
+        }
+      },
+      "quantidade": 30
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6445f692afb8a7e54ed3a620"
+  },
+  "nome": "Loja 2",
+  "endereco": "Avenida Fashion, 456 - Paulista, Paulista - PE",
+  "produtos": [
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a61a"
+        }
+      },
+      "quantidade": 20
+    },
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a61b"
+        }
+      },
+      "quantidade": 40
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6445f692afb8a7e54ed3a621"
+  },
+  "nome": "Loja 3",
+  "endereco": "Avenida da Aventura, 456 - Vila Aventureira, Rio de Janeiro - RJ",
+  "produtos": [
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a61c"
+        }
+      },
+      "quantidade": 25
+    },
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a61d"
+        }
+      },
+      "quantidade": 35
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6445f693afb8a7e54ed3a622"
+  },
+  "nome": "Loja 4",
+  "endereco": "Avenida General Manoel Rabelo, 1111 - Cavaleiro, Jabotão dos Guararapes - PE",
+  "produtos": [
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a61e"
+        }
+      },
+      "quantidade": 15
+    },
+    {
+      "produto": {
+        "$ref": "catalogo",
+        "$id": {
+          "$oid": "6445f679afb8a7e54ed3a61d"
+        }
+      },
+      "quantidade": 35
+    }
+  ]
+}]

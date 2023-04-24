@@ -1,5 +1,5 @@
 db.createCollection("loja");
-db.lojas.insertOne({
+db.loja.insertOne({
     "nome": "Loja 1",
     "endereco": "Rua das Flores, 123 - Centro, São Paulo - SP",
     "produtos": [
@@ -20,7 +20,7 @@ db.lojas.insertOne({
     ]
 });
 
-db.lojas.insertOne({
+db.loja.insertOne({
     "nome": "Loja 2",
     "endereco": "Avenida Fashion, 456 - Paulista, Paulista - PE",
     "produtos": [
@@ -41,7 +41,7 @@ db.lojas.insertOne({
     ]
 });
 
-db.lojas.insertOne({
+db.loja.insertOne({
     "nome": "Loja 3",
     "endereco": "Avenida da Aventura, 456 - Vila Aventureira, Rio de Janeiro - RJ",
     "produtos": [
@@ -62,7 +62,7 @@ db.lojas.insertOne({
     ]
 });
 
-db.lojas.insertOne({
+db.loja.insertOne({
     "nome": "Loja 4",
     "endereco": "Avenida General Manoel Rabelo, 1111 - Cavaleiro, Jabotão dos Guararapes - PE",
     "produtos": [
