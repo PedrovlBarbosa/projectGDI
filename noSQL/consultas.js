@@ -1,11 +1,18 @@
-//[find]
-db.catalogo.find({
+//[find] 
+db.catalogo.findOne({
   "preco" : {
       $lte: "100.00"
   }
 })
 
-//[findOne]
+//[ALL] 
 db.catalogo.find({
-  
+  "tamanho" : {
+      $all: [
+        "P",
+        "M"
+      ]
+  }
 })
+
+/

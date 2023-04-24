@@ -97,7 +97,7 @@ db.catalogo.insertMany([
         "preco": 45.00,
         "categoria": {
             $ref: "categorias",
-            $id: db.categorias.findOne({"cuecas"})
+            $id: db.categorias.findOne({name:"cuecas"})
         }
     },
     {
@@ -107,7 +107,7 @@ db.catalogo.insertMany([
         "preco": 60.00,
         "categoria": {
             $ref: "categorias",
-            $id: db.categorias.findOne({"lingerie"})
+            $id: db.categorias.findOne({name:"lingerie"})
         }
     }    
 ]);

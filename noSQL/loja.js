@@ -83,7 +83,7 @@ db.loja.insertOne({
     ]
 });
 
-db.lojas.insertOne({
+db.loja.insertOne({
     "nome" : "Loja 5",
     "endereco": "Rua das artes, 302 - Boa Vista, Recife - PE",
     "produtos": [
@@ -104,14 +104,14 @@ db.lojas.insertOne({
     ]
 });
 
-db.lojas.insertOne({
+db.loja.insertOne({
     "nome" : "Loja 6",
     "endereco": "Rua das cirandas, 40 - Derby, Recife - PE",
     "produtos": [
         {
             "produto": {
                 $ref: "catalogo",
-                $id: db.catalogo.findOne({name: "Short tetel"})._id   
+                $id: db.catalogo.findOne({name: "Short tectel"})._id   
             },
             "quantidade" : 16
         },
