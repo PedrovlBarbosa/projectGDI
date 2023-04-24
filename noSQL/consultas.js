@@ -5,7 +5,7 @@ db.catalogo.findOne({
   }
 })
 
-//[all] [find]
+//[all] [find] produtos que tem tamanho P e M
 db.catalogo.find({
   "tamanho" : {
       $all: [
@@ -15,14 +15,14 @@ db.catalogo.find({
   }
 })
 
-//[Gte]
+//[Gte] Roupas acima do ano de 2020
 db.categoria.find({
   "ano": {
-    $gte: "2020"
+    $gte: 2020
   }
 })
 
-//[aggregate]
+//[aggregate] média de preços das roupas
 db.catalogo.aggregate([{
   $group: {
       _id:null, 
@@ -31,3 +31,47 @@ db.catalogo.aggregate([{
       }
   } 
 }])
+
+//[Exists] produtos com quantidae diferente de 0
+db.loja.find(
+  { 
+  "produtos.quantidade": 
+  { 
+    $exists: true, $ne: 0 
+    } 
+})
+
+// [Count] [group] Quantidade de produtos em cada loja
+db.loja.aggregate([
+  {
+      $unwind: {
+          path: '$produtos'
+      }
+ }, 
+ {
+      $group: {
+          _id: '$nome',
+          produto: {
+              $count: {}
+          }
+      }
+  }
+]);
+
+//[Sum] [Sort]
+db.loja.aggregate([
+  {
+    $unwind: "$produtos"
+  },
+  {
+    $group: {
+      _id: "$nome",
+      quantidadeTotal: { $sum: "$produtos.quantidade" }
+    }
+  },
+  {
+    $sort: {
+      quantidadeTotal: -1
+    }
+  }
+])
