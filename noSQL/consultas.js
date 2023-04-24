@@ -32,16 +32,16 @@ db.catalogo.aggregate([{
   } 
 }])
 
-//[Exists] produtos com quantidae diferente de 0
+//[Exists] [limit] produtos com quantidae diferente de 0
 db.loja.find(
   { 
   "produtos.quantidade": 
   { 
     $exists: true, $ne: 0 
-    } 
-})
+    }
+}).limit(5)
 
-// [Count] [group] Quantidade de produtos em cada loja
+// [Count] [group] [Pretty] Quantidade de tipos produtos em cada loja
 db.loja.aggregate([
   {
       $unwind: {
@@ -56,9 +56,9 @@ db.loja.aggregate([
           }
       }
   }
-]);
+]).pretty();
 
-//[Sum] [Sort]
+//[Sum] [Sort] quantidade de produtos de cada loja
 db.loja.aggregate([
   {
     $unwind: "$produtos"
@@ -75,3 +75,72 @@ db.loja.aggregate([
     }
   }
 ])
+
+//[Match] [Project] campos da categoria vestidos
+db.catalogo.aggregate([
+  {
+    $match: {
+      "categoria.$id": db.categorias.findOne(
+        {
+          name: "vestidos"
+        })._id
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      descricao: 1,
+      preco: 1
+    }
+  }
+])
+
+//[Lookup] categoria de cada produto do catalogo
+db.catalogo.aggregate([
+  {
+    $lookup: {
+      from: "categorias",
+      localField: "categoria.$id",
+      foreignField: "_id",
+      as: "categoria"
+    }
+  }
+]);
+
+//[max] produto mais caro de cada categoria
+db.catalogo.aggregate([
+  {
+    $group: {
+      _id: "$categoria.$id",
+      produto: { $max: { preco: "$preco", name: "$name" } }
+    }
+  },
+  {
+    $lookup: {
+      from: "categorias",
+      localField: "_id",
+      foreignField: "_id",
+      as: "categoria"
+    }
+  },
+  {
+    $unwind: "$categoria"
+  },
+  {
+    $project: {
+      _id: 0,
+      categoria: "$categoria.name",
+      produto: "$produto.name",
+      preco: "$produto.preco"
+    }
+  }
+])
+
+//[size] produtos com pelo menos 3 tamanhos diferentes diponíveis
+db.catalogo.find(
+  { "tamanho": 
+  { 
+    $size: 3 
+  } 
+})
