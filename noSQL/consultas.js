@@ -1,11 +1,11 @@
-//[find] 
+//[findOne] 
 db.catalogo.findOne({
   "preco" : {
-      $lte: "100.00"
+      $lte: 100.00
   }
 })
 
-//[ALL] 
+//[all] [find]
 db.catalogo.find({
   "tamanho" : {
       $all: [
@@ -15,4 +15,33 @@ db.catalogo.find({
   }
 })
 
-/
+//[Gte]
+db.categoria.find({
+  "ano": {
+    $gte: 2020
+  }
+})
+
+//[aggregate]
+db.courses.aggregate([{
+  $unwind: {
+      path: '$assistantList',
+  }
+}, {
+  $unwind: {
+      path: '$assistantList.availabilityList',
+  }
+}, {
+  $group: {
+      _id: '$assistantList.name',
+      hours: {
+          $sum: '$assistantList.availabilityList.durationInMinutes'
+      }
+  }
+}, {
+  $sort: {
+      hours: -1
+  }
+}, {
+  $limit: 3
+}])
