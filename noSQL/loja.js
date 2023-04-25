@@ -143,7 +143,7 @@ db.lojas.insertOne({
     ],
 });
 
-db.loja.insertOne({
+db.lojas.insertOne({
     "nome": "Loja Renner",
     "endereco": 
         {
@@ -274,7 +274,7 @@ db.loja.insertOne({
                 $id: db.catalogo.findOne({name: "Saia Florida"})._id
             },
             "quantidade_vendida": 5,
-            "data_venda" : new Date("06/12/23")
+            "data_venda" : new Date("04/11/23")
         },
         {
             "produto": {
@@ -282,7 +282,7 @@ db.loja.insertOne({
                 $id: db.catalogo.findOne({name: "Camisa Botão"})._id
             },
             "quantidade_vendida": 4,
-            "data_venda" : new Date("22/12/23")
+            "data_venda" : new Date("12/12/23")
         },
         {
             "produto": {
@@ -290,7 +290,7 @@ db.loja.insertOne({
                 $id: db.catalogo.findOne({name: "Vestido Urban"})._id
             },
             "quantidade_vendida": 4,
-            "data_venda" : new Date("22/12/23")
+            "data_venda" : new Date("14/12/23")
         },
     ],
 });
