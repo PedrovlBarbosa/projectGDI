@@ -25,8 +25,12 @@ db.catalogo.find({
 //[gte] Roupas acima do ano de 2020
 db.categorias.find({
   $and: [
-      {fabricado: "Brasil"},
-      {ano: {$gte: 2021}}
+      {
+        fabricado: "Brasil"
+      },
+      {
+        ano: {$gte: 2021}
+      }
   ]
 })
 
@@ -143,7 +147,7 @@ db.catalogo.countDocuments({
   estilo: "casual"
 })
 
-//[filter] [cond]
+//[filter] [cond] aumentar o preco dos itens do genero masculino e estilo casual em 10%
 db.catalogo.updateMany(
   {
     $and: [
@@ -155,16 +159,26 @@ db.catalogo.updateMany(
        }
     ]
   },
-  {
-    $set: 
-    { preco: 
-      { 
-        $multiply: [ "$preco", 1.1 ] 
-      } 
+  [
+    {
+      $set: {
+        preco: {
+          $cond: {
+            if: 
+            { 
+              $eq: [ "$genero", "masculino" ] 
+            },
+            then: 
+            { 
+              $multiply: [ "$preco", 1.1 ] 
+            },
+            else: "$preco"
+          }
+        }
+      }
     }
-  }
+  ]
 )
-
 
 // WHERE e Function lista o catalogo que as roupas sao unissex
 db.catalogo.find({
