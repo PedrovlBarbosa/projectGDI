@@ -13,9 +13,9 @@
 13. EXISTS ok
 14. SORT ok
 15. LIMIT ok
-16. $WHERE  testar
-17. MAPREDUCE  testar
-18. FUNCTION  testar
+16. $WHERE  ok
+17. MAPREDUCE  OK
+18. FUNCTION  ok
 19. PRETTY ok
 20. ALL ok
 21. SET
@@ -28,4 +28,4 @@
 28. COND
 29. LOOKUP ok
 30. FINDONE ok
-31. ADDTOSET  testar
+31. ADDTOSET ok

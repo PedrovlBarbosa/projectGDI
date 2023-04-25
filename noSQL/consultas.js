@@ -147,39 +147,51 @@ db.catalogo.find(
 })
 
 
-// WHERE e Function lista as categorias que tiveram roupas fabricadas na china
-db.categoria.find({$where: function() {
-    return (this.fabricado == "China")}
-}).pretty();
+// WHERE e Function lista o catalogo que as roupas sao unissex
+db.catalogo.find({
+    $where: function() {
+      return this.genero == 'unissex';
+    }
+  })
 
-
-// MAPREDUCE; Duas funçoes <map , reduce> para listar as lojas e seus endereços e verificar a quantidade de produtos
-var mapFunction_ = function() {
-    var quant = this.produtos(1).quantidade;
-    emit (this.name, this.endereco, quant);
+// MAPREDUCE;
+// Função de mapeamento
+var mapFunction = function() {
+    for (var i = 0; i < this.produtos_vendidos.length; i++) {
+        var key = this.produtos_vendidos[i].produto.$id;
+        var value = this.produtos_vendidos[i].quantidade_vendida;
+        emit(key, value);
+    }
 };
 
-var reduceFunction_ = function(name, endereco, quant) {
-    return Array.sum(quant);
+// Função de redução
+var reduceFunction = function(key, values) {
+    return Array.sum(values);
 };
 
-db.loja.mapReduce (
-  mapFunction_,
-  reduceFunction_,
-  {out: "loja_mapReduce"}
+// Executa o operador MAPREDUCE
+db.lojas.mapReduce(
+    mapFunction,
+    reduceFunction,
+    {
+        out: "total_vendas_por_produto"
+    }
 );
 
+// Resultado
+db.total_vendas_por_produto.find();
 
-// ADDTOSET para adicionar novo catalogo a loja 1
-db.loja.updateMany({nome: "Loja 1"}, {$addToSet:
-    {
-      produtos:
-      {
-        $each: 
-        [
-          db.catalogo.findOne({name: "Cueca box"})._id,
-          db.catalogo.findOne({name: "Short tectel"})._id
-        ]
-      }
+
+// ADDTOSET para adicionar novo catalogo a Loja Riachuelo
+db.lojas.updateOne(
+    { "nome": "Loja Riachuelo" },
+    { $addToSet: { "produtos_disponiveis": 
+        { "produto": { 
+            $ref: "catalogo", 
+            $id: db.catalogo.findOne({name: "Camiseta cropped"})._id 
+          },
+          "quantidade": 10
+        } 
+      } 
     }
-});
+);
