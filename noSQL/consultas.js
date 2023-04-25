@@ -65,7 +65,7 @@ db.lojas.aggregate([
       } 
     } 
   }
-]);
+]).pretty();
 
 //[Sort] preco dos 3 itens mais caros do catalogo
 db.catalogo.find().sort(
