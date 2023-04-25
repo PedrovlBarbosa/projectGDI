@@ -10,7 +10,7 @@ db.categorias.insertMany([
     {
         "name": "blusas",
         "fabricado": "Brasil",
-        "marca": "Arte em Crochê",
+        "marca": "Arte em Tecidos",
         "tecido": "algodao",
         "ano": 2021,
     },

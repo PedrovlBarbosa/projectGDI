@@ -1,4 +1,4 @@
-db.createCollection("loja");
+db.createCollection("lojas");
 db.loja.insertOne({
     "nome": "Loja 1",
     "endereco": "Rua das Flores, 123 - Centro, São Paulo - SP",
