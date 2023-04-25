@@ -195,3 +195,30 @@ db.lojas.updateOne(
       } 
     }
 );
+
+// [SET] modificar o endereco da loja Riachuelo
+db.lojas.updateOne(
+    { nome: "Loja Riachuelo" },
+    { $set: { endereco: { 
+        rua: "Rua das Flores", 
+        bairro: "Centro", 
+        cidade: "Recife", 
+        estado: "Pernambuco" 
+    } } }
+ );
+
+
+// [TEXT] CRIA UM INDICE DE TEXTO NA COLLECTION LOJAS 
+//E REALIZA UMA BUSCA NA COLLECTION PARA SABER SE CONTEM 
+//A PALAVRA "LOJA RIACHUELO" NA COLLECTION
+
+db.lojas.createIndex({"nome": "text"})
+db.lojas.find({$text: {$search: "Loja Riachuelo"}})
+
+
+// [UPDATE] Atualizar o campo fabricado da categoria "cuecas" para "Estados Unidos"
+db.categorias.updateOne(
+    { name: "cuecas" },
+    { $set: { fabricado: "Estados Unidos" } }
+ );
+ 

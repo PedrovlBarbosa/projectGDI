@@ -4,20 +4,12 @@ db.catalogo.renameCollection("Catalog");
 db.categorias.renameCollection("Categories");
 db.loja.renameCollection("Store");
 
-// [Save] Adiciona mais uma categoria
-db.Categories.save({
-    "name": "moletom",
-    "fabricado": "Estados Unidos",
-    "marca": "MoletOns",
-    "ano": "2023",
-    "genero": "masculino"
-});
+// [Save] Modificar o nome da Loja Riachuelo para Riachuelo e usar o .SAVE
+let loja = db.lojas.findOne({ nome: "Loja Riachuelo" });
 
-// [AddToSet] Adiciona um novo tamanho ao catalogo
-db.Categories.updateOne({
-    "name": "Cueca box"
-}, {
-    $push: {
-        tamanho: "P",
-        },
-});
+// atualiza o nome da loja
+loja.nome = "Riachuelo";
+
+// salva as mudanças na coleção
+db.lojas.save(loja);
+
