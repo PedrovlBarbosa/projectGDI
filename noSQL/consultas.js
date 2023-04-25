@@ -1,7 +1,14 @@
-//[findOne] 
+//[findOne] item menor que 100 reais do estilo casual e genero unissex
 db.catalogo.findOne({
   "preco" : {
       $lte: 100.00
+  },
+  "estilo" : 
+  { 
+    $eq: "casual"
+  },
+  "genero" : {
+    $eq: "unissex"
   }
 })
 
@@ -56,23 +63,11 @@ db.lojas.aggregate([
   }
 ]);
 
-//[Sum] [Sort] quantidade de produtos de cada loja ----------------------------------não
-db.lojas.aggregate([
-  {
-    $unwind: "$produtos"
-  },
-  {
-    $group: {
-      _id: "$nome",
-      quantidadeTotal: { $sum: "$produtos.quantidade" }
-    }
-  },
-  {
-    $sort: {
-      quantidadeTotal: -1
-    }
-  }
-])
+//[Sort] preco dos 3 itens mais caros do catalogo
+db.catalogo.find().sort(
+  { 
+    preco: -1 
+  }).limit(3)
 
 //[Match] [Project] campos da categoria vestidos
 db.catalogo.aggregate([
@@ -142,6 +137,33 @@ db.catalogo.find(
     $size: 3 
   } 
 })
+
+// [count] quantidade de itens com o estilo casual
+db.catalogo.countDocuments({
+  estilo: "casual"
+})
+
+//[filter] [cond]
+db.catalogo.updateMany(
+  {
+    $and: [
+      { 
+        genero: "masculino"
+       },
+      { 
+        estilo: "casual"
+       }
+    ]
+  },
+  {
+    $set: 
+    { preco: 
+      { 
+        $multiply: [ "$preco", 1.1 ] 
+      } 
+    }
+  }
+)
 
 
 // WHERE e Function lista o catalogo que as roupas sao unissex
@@ -219,3 +241,4 @@ db.categorias.updateOne(
     { $set: { fabricado: "Estados Unidos" } }
  );
  
+
