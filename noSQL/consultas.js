@@ -33,34 +33,31 @@ db.catalogo.aggregate([{
   } 
 }])
 
-//[Exists] [limit] produtos com quantidae diferente de 0
-db.loja.find(
-  { 
-  "produtos.quantidade": 
-  { 
-    $exists: true, $ne: 0 
-    }
-}).limit(5)
+//[Exists] [limit] produtos que possuem cores disponiveis
+db.catalogo.find({
+   "cores_disponiveis": 
+   { 
+    $exists: true 
+  } }).limit(5)
 
-// [Count] [group] [Pretty] Quantidade de tipos produtos em cada loja
-db.loja.aggregate([
-  {
-      $unwind: {
-          path: '$produtos'
-      }
- }, 
- {
-      $group: {
-          _id: '$nome',
-          produto: {
-              $count: {}
-          }
-      }
+// [group] [Pretty] Quantidade de tipos produtos em cada loja 
+db.lojas.aggregate([
+  { 
+    $unwind: "$produtos_disponiveis" 
+  },
+  { 
+    $group: 
+    { 
+      _id: "$nome", num_tipos_produtos: 
+      { 
+        $sum: 1 
+      } 
+    } 
   }
-]).pretty();
+]);
 
-//[Sum] [Sort] quantidade de produtos de cada loja
-db.loja.aggregate([
+//[Sum] [Sort] quantidade de produtos de cada loja ----------------------------------não
+db.lojas.aggregate([
   {
     $unwind: "$produtos"
   },
