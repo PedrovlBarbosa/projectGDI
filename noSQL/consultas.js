@@ -15,11 +15,12 @@ db.catalogo.find({
   }
 })
 
-//[Gte] Roupas acima do ano de 2020
-db.categoria.find({
-  "ano": {
-    $gte: 2020
-  }
+//[gte] Roupas acima do ano de 2020
+db.categorias.find({
+  $and: [
+      {fabricado: "Brasil"},
+      {ano: {$gte: 2021}}
+  ]
 })
 
 //[aggregate] média de preços das roupas
@@ -154,7 +155,7 @@ db.categoria.find({$where: function() {
 
 // MAPREDUCE; Duas funçoes <map , reduce> para listar as lojas e seus endereços e verificar a quantidade de produtos
 var mapFunction_ = function() {
-    var quant = this.produtos.quantidade;
+    var quant = this.produtos(1).quantidade;
     emit (this.name, this.endereco, quant);
 };
 

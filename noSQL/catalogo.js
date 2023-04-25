@@ -4,31 +4,116 @@ db.catalogo.insertMany([
         "name": "Vestido Floral",
         "descricao": "Vestido curto de alças finas com estampa floral em tons de rosa e verde. Possui decote em V e fechamento com zíper invisível na parte de trás.",
         "tamanho": ["P","M","G"],
+        "estilo" : "casual",
+        "cores_diponiveis": ["Azul","Branco"],
         "preco": 129.90,
         "categoria": {
             $ref: "categorias",
             $id: db.categorias.findOne({name: "vestidos"})._id
-        }
+        },
+        "genero": "feminino"
+    },
+    {
+        "name": "Vestido Urban",
+        "descricao": "Vestido despojado, ideal para o dia a dia.",
+        "tamanho": ["M","G"],
+        "estilo" : "Street",
+        "cores_diponiveis": ["Azul","Branco", "Camuflado"],
+        "preco": 229.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "vestidos"})._id
+        },
+        "genero": "feminino"
+    },
+    {
+        "name": "Vestido Longo",
+        "descricao": "Vestido com costura de alto padrão, perfeito para ocasioes especiais.",
+        "tamanho": ["P","M","G"],
+        "estilo" : "Elegante",
+        "cores_diponiveis": ["Azul","Preto", "Vermelho"],
+        "preco": 329.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "vestidos"})._id
+        },
+        "genero": "feminino"
+    },
+    {
+        "name": "Camiseta Estampada",
+        "descricao": "Camiseta unissex em algodão. Disponível em diversas estampas.",
+        "tamanho": ["PP","P","M","G"],
+        "estilo": "Casual",
+        "cores_disponiveis": ["Branco", "Preto", "Cinza"],
+        "preco": 89.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "camisetas"})._id
+        },
+        "genero": "unissex"
     },
     {
         "name": "Camiseta Basica",
-        "descricao": "Camiseta unissex em algodão com modelagem reta e gola redonda. Disponível em diversas cores.",
-        "tamanho": ["PP","P","M","G","GG"],
+        "descricao": "Camiseta unissex em algodão. Sem estampas.",
+        "tamanho": ["PP","P","M","G", "GG"],
+        "estilo": "Casual",
+        "cores_diponiveis": ["Azul", "Branco", "Preto", "Marrom"],
         "preco": 49.90,
         "categoria": {
             $ref: "categorias",
             $id: db.categorias.findOne({name: "camisetas"})._id
-        }
+        },
+        "genero": "unissex"
     },
     {
-        "name": "Calsa Jeans Skinny",
-        "descricao": "Calça jeans feminina com modelagem skinny e lavagem clara. Possui cintura média e cinco bolsos.",
+        "name": "Camiseta Gola Alta",
+        "descricao": "Camiseta unissex em algodão. Sem estampas, Tecido de alta qualidade",
+        "tamanho": ["P","M","G"],
+        "estilo": "Elegante",
+        "cores_diponiveis": ["Azul", "Branco", "Preto"],
+        "preco": 149.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "camisetas"})._id
+        },
+        "genero": "unissex"
+    },
+    {
+        "name": "Calca Skinny",
+        "descricao": "Calça jeans com modelagem skinny e lavagem clara. Possui cintura média e cinco bolsos.",
         "tamanho": ["34","36","38","40","42"],
+        "estilo": "Street",
+        "cores_disponiveis": ["Azul", "Preto"],
         "preco": 159.90,
         "categoria": {
             $ref: "categorias",
             $id: db.categorias.findOne({name: "calcas"})._id
-        }
+        },
+        "genero": "unissex"
+    },
+    {
+        "name": "Calca rasgada",
+        "descricao": "Calça jeans masculina com modelagem skinny e lavagem clara. Possui cintura média e cinco bolsos.",
+        "tamanho": ["34","36","38","40","42"],
+        "estilo": "casual",
+        "preco": 159.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "calcas"})._id
+        },
+        "genero": "masculino"
+    },
+    {
+        "name": "Calca de shopping",
+        "descricao": "Calça jeans feminina com modelagem boca de sino. Possui cintura média e cinco bolsos.",
+        "tamanho": ["34","36","38","40","42"],
+        "estilo": "casual",
+        "preco": 159.90,
+        "categoria": {
+            $ref: "categorias",
+            $id: db.categorias.findOne({name: "calcas"})._id
+        },
+        "genero": "feminino"
     },
     {
         "name": "Blusa de Croche",

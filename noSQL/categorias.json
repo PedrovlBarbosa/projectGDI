@@ -5,7 +5,7 @@
   "name": "vestidos",
   "fabricado": "brasil",
   "marca": "Floratta Modas",
-  "ano": "2022",
+  "ano": 2022,
   "genero": "feminino"
 },{
   "_id": {
@@ -14,7 +14,7 @@
   "name": "blusas",
   "fabricado": "brasil",
   "marca": "Arte em Crochê",
-  "ano": "2021",
+  "ano": 2021,
   "genero": "feminino"
 },{
   "_id": {
@@ -23,7 +23,7 @@
   "name": "saias",
   "fabricado": "argentina",
   "marca": "Moda Feminina",
-  "ano": "2021",
+  "ano": 2021,
   "genero": "feminino"
 },{
   "_id": {
@@ -32,7 +32,7 @@
   "name": "camisetas",
   "fabricado": "china",
   "marca": "Basic Wear",
-  "ano": "2021",
+  "ano": 2021,
   "genero": "masculino"
 },{
   "_id": {
@@ -41,7 +41,7 @@
   "name": "calcas",
   "fabricado": "india",
   "marca": "Denim Company",
-  "ano": "2020",
+  "ano": 2020,
   "genero": "masculino"
 },{
   "_id": {
@@ -50,7 +50,7 @@
   "name": "bermudas",
   "fabricado": "bangladesh",
   "marca": "Outdoor Adventures",
-  "ano": "2022",
+  "ano": 2022,
   "genero": "masculino"
 },{
   "_id": {
@@ -59,6 +59,6 @@
   "name": "camisa",
   "fabricado": "brasil",
   "marca": "Hering",
-  "ano": "2023",
+  "ano": 2023,
   "genero": "masculino"
 }]

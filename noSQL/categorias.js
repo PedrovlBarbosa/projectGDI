@@ -4,70 +4,70 @@ db.categorias.insertMany([
         "name": "vestidos",
         "fabricado": "Brasil",
         "marca": "Floratta Modas",
+        "tecido": "algodao",
         "ano": 2022,
-        "genero": "feminino"
     },
     {
         "name": "blusas",
         "fabricado": "Brasil",
         "marca": "Arte em Crochê",
+        "tecido": "algodao",
         "ano": 2021,
-        "genero": "feminino"
     },
     {
         "name": "saias",
         "fabricado": "Argentina",
         "marca": "Moda Feminina",
+        "tecido": "poliester",
         "ano": 2021,
-        "genero": "feminino"
     },
     {
         "name": "camisetas",
         "fabricado": "China",
         "marca": "Basic Wear",
+        "tecido": "algodao",
         "ano": 2021,
-        "genero": "masculino"
     },
     {
         "name": "calcas",
         "fabricado": "India",
         "marca": "Denim Company",
+        "tecido": "jeans",
         "ano": 2020,
-        "genero": "masculino"
     },
     {
         "name": "bermudas",
         "fabricado": "Bangladesh",
         "marca": "Outdoor Adventures",
+        "tecido": "sarja",
         "ano": 2022,
-        "genero": "masculino"
     },
     {
         "name": "camisa",
         "fabricado": "Brasil",
         "marca": "Hering",
+        "tecido": "algodao",
         "ano": 2023,
-        "genero": "masculino"
     },
     {
         "name": "shorts",
         "fabricado" : "China",
         "marca" : "Dyingo",
+        "tecido": "algodao",
         "ano" : 2023,
-        "genero" : "feminino"
     },
     {
         "name": "cuecas",
         "fabricado" : "Brasil",
         "marca" : "lacoste",
+        "tecido" : "algodao",
         "ano" : 2023,
-        "genero" : "masculino"
     },
     {
         "name": "lingerie",
         "fabricado": "Brasil",
         "marca": "zara",
+        "tecido": "algodao",
         "ano" : 2023,
-        "genero" : "feminino"
     }  
 ]);
