@@ -2,7 +2,7 @@
 
 db.catalogo.renameCollection("Catalog");
 db.categorias.renameCollection("Categories");
-db.loja.renameCollection("Store");
+db.lojas.renameCollection("Store");
 
 // [Save] Modificar o nome da Loja Riachuelo para Riachuelo e usar o .SAVE
 let loja = db.lojas.findOne({ nome: "Loja Riachuelo" });
