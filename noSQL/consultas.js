@@ -144,3 +144,41 @@ db.catalogo.find(
     $size: 3 
   } 
 })
+
+
+// WHERE e Function lista as categorias que tiveram roupas fabricadas na china
+db.categoria.find({$where: function() {
+    return (this.fabricado == "China")}
+}).pretty();
+
+
+// MAPREDUCE; Duas funçoes <map , reduce> para listar as lojas e seus endereços e verificar a quantidade de produtos
+var mapFunction_ = function() {
+    var quant = this.produtos.quantidade;
+    emit (this.name, this.endereco, quant);
+};
+
+var reduceFunction_ = function(name, endereco, quant) {
+    return Array.sum(quant);
+};
+
+db.loja.mapReduce (
+  mapFunction_,
+  reduceFunction_,
+  {out: "loja_mapReduce"}
+);
+
+
+// ADDTOSET para adicionar novo catalogo a loja 1
+db.loja.updateMany({nome: "Loja 1"}, {$addToSet:
+    {
+      produtos:
+      {
+        $each: 
+        [
+          db.catalogo.findOne({name: "Cueca box"})._id,
+          db.catalogo.findOne({name: "Short tectel"})._id
+        ]
+      }
+    }
+});
